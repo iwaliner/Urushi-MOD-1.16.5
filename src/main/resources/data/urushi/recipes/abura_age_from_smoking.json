@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "urushi:tofu"
+  },
+  "result": "urushi:abura_age",
+  "experience": 0.35,
+  "cookingtime": 100
+}

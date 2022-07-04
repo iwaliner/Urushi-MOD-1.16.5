@@ -1,0 +1,9 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "urushi:block/kakejiku_base",
+	"textures": {
+		"0": "urushi:block/kakejiku_shinchoku_upper",
+		"1": "urushi:block/kakejiku_shinchoku_under",
+		"particle": "urushi:block/kakejiku_shinchoku_upper"
+	}
+}

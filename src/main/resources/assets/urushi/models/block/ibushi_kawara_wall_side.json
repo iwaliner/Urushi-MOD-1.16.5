@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_side",
+    "textures": {
+        "wall": "urushi:block/kawara_block_ibushi"
+    }
+}
