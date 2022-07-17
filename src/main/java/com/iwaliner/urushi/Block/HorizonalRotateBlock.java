@@ -6,6 +6,7 @@ import net.minecraft.block.HorizontalBlock;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.StateContainer;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -19,7 +20,6 @@ import java.util.Random;
 public class HorizonalRotateBlock extends HorizontalBlock {
 
     public HorizonalRotateBlock(Properties p_i48377_1_) {
-
         super(p_i48377_1_);
     }
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {

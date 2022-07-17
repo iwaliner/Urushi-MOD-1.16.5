@@ -246,6 +246,24 @@ public class ItemsRegister {
     public static final RegistryObject<Item> Sweetfish;
     public static final RegistryObject<Item> GoldfishBucket;
     public static final RegistryObject<Item> Goldfish;
+    public static final RegistryObject<Item> ItemBlockConcrete;
+    public static final RegistryObject<Item> ItemBlockConcreteSlab;
+    public static final RegistryObject<Item> ItemBlockConcreteStairs;
+    public static final RegistryObject<Item> ItemBlockDirtyConcrete;
+    public static final RegistryObject<Item> ItemBlockDirtyConcreteSlab;
+    public static final RegistryObject<Item> ItemBlockDirtyConcreteStairs;
+    public static final RegistryObject<Item> ItemBlockLidlessGroove;
+    public static final RegistryObject<Item> ItemBlockGroove;
+    public static final RegistryObject<Item> ItemBlockMeshGroove;
+    public static final RegistryObject<Item> ItemBlockThatchedRoof45;
+    public static final RegistryObject<Item> ItemBlockThatchedRoof225;
+    public static final RegistryObject<Item> ItemBlockIbushiKawaraRoof45;
+    public static final RegistryObject<Item> ItemBlockIbushiKawaraRoof225;
+    public static final RegistryObject<Item> ItemBlockCopperKawaraRoof45;
+    public static final RegistryObject<Item> ItemBlockCopperKawaraRoof225;
+    public static final RegistryObject<Item> ItemBlockCupricOxideKawaraRoof45;
+    public static final RegistryObject<Item> ItemBlockCupricOxideKawaraRoof225;
+
 
     public ItemsRegister() {
     }
@@ -908,6 +926,23 @@ public class ItemsRegister {
         Sweetfish = ITEMS.register("sweetfish", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Sweetfish));});
         GoldfishBucket = ITEMS.register("goldfish_bucket", () -> {return new GoldfishBucketItem( Fluids.WATER,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
         Goldfish = ITEMS.register("goldfish", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Goldfish));});
+        ItemBlockConcrete = ITEMS.register("concrete", () -> {return new BlockItem((Block) BlocksRegister.Concrete.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockConcreteSlab = ITEMS.register("concrete_slab", () -> {return new BlockItem((Block) BlocksRegister.ConcreteSlab.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockConcreteStairs = ITEMS.register("concrete_stairs", () -> {return new BlockItem((Block) BlocksRegister.ConcreteStairs.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockDirtyConcrete = ITEMS.register("dirty_concrete", () -> {return new BlockItem((Block) BlocksRegister.DirtyConcrete.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockDirtyConcreteSlab = ITEMS.register("dirty_concrete_slab", () -> {return new BlockItem((Block) BlocksRegister.DirtyConcreteSlab.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockDirtyConcreteStairs = ITEMS.register("dirty_concrete_stairs", () -> {return new BlockItem((Block) BlocksRegister.DirtyConcreteStairs.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockLidlessGroove = ITEMS.register("lidless_groove", () -> {return new BlockItem((Block) BlocksRegister.LidlessGroove.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockGroove = ITEMS.register("groove", () -> {return new BlockItem((Block) BlocksRegister.Groove.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockMeshGroove = ITEMS.register("mesh_groove", () -> {return new BlockItem((Block) BlocksRegister.MeshGroove.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockThatchedRoof45 = ITEMS.register("thatched_roof_45", () -> {return new BlockItem((Block) BlocksRegister.ThatchedRoof45.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockThatchedRoof225 = ITEMS.register("thatched_roof_225", () -> {return new BlockItem((Block) BlocksRegister.ThatchedRoof225.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockIbushiKawaraRoof45 = ITEMS.register("ibushi_kawara_roof_45", () -> {return new BlockItem((Block) BlocksRegister.IbushiKawaraRoof45.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockIbushiKawaraRoof225 = ITEMS.register("ibushi_kawara_roof_225", () -> {return new BlockItem((Block) BlocksRegister.IbushiKawaraRoof225.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockCopperKawaraRoof45 = ITEMS.register("copper_kawara_roof_45", () -> {return new BlockItem((Block) BlocksRegister.CopperKawaraRoof45.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockCopperKawaraRoof225 = ITEMS.register("copper_kawara_roof_225", () -> {return new BlockItem((Block) BlocksRegister.CopperKawaraRoof225.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockCupricOxideKawaraRoof45 = ITEMS.register("cupric_oxide_kawara_roof_45", () -> {return new BlockItem((Block) BlocksRegister.CupricOxideKawaraRoof45.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockCupricOxideKawaraRoof225 = ITEMS.register("cupric_oxide_kawara_roof_225", () -> {return new BlockItem((Block) BlocksRegister.CupricOxideKawaraRoof225.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
 
 
     }

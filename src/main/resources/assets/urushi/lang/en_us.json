@@ -232,6 +232,22 @@
    "container.foxhopper":"advanced Hopper",
    "item.urushi.carp": "Carp",
    "item.urushi.sweetfish": "Sweetfish",
-   "item.urushi.goldfish": "Goldfish"
-   
+   "item.urushi.goldfish": "Goldfish",
+   "block.urushi.concrete": "Concrete",
+   "block.urushi.concrete_slab": "Concrete Slab",
+   "block.urushi.concrete_stairs": "Concrete Stairs",
+   "block.urushi.dirty_concrete": "Dirty Concrete",
+   "block.urushi.dirty_concrete_slab": "Dirty Concrete Slab",
+   "block.urushi.dirty_concrete_stairs": "Dirty Concrete Stairs",
+   "block.urushi.lidless_groove": "Lidless Groove",
+   "block.urushi.groove": "Groove",
+   "block.urushi.mesh_groove": "Mesh Groove",
+   "block.urushi.thatched_roof_45": "Thatched Roof for Stairs",
+   "block.urushi.thatched_roof_225": "Thatched Roof for Slab",
+   "block.urushi.ibushi_kawara_roof_45": "Ibushi Kawara Roof for Stairs",
+   "block.urushi.ibushi_kawara_roof_225": "Ibushi Kawara Roof for Slab",
+   "block.urushi.copper_kawara_roof_45": "Copper Kawara Roof for Stairs",
+   "block.urushi.copper_kawara_roof_225": "Copper Kawara Roof for Slab",
+   "block.urushi.cupric_oxide_kawara_roof_45": "Cupric Oxide Kawara Roof for Stairs",
+   "block.urushi.cupric_oxide_kawara_roof_225": "Cupric Oxide Kawara Roof for Slab"
 }

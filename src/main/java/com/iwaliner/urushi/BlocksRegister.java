@@ -210,7 +210,27 @@ public class BlocksRegister {
     public static final RegistryObject<Block> ThatchedSlab;
     public static final RegistryObject<Block> ThatchedStairs;
     public static final RegistryObject<Block> BlankAntiqueFusuma;
+    public static final RegistryObject<Block> Concrete;
+    public static final RegistryObject<Block> ConcreteSlab;
+    public static final RegistryObject<Block> ConcreteStairs;
+    public static final RegistryObject<Block> DirtyConcrete;
+    public static final RegistryObject<Block> DirtyConcreteSlab;
+    public static final RegistryObject<Block> DirtyConcreteStairs;
+    public static final RegistryObject<Block> LidlessGroove;
+    public static final RegistryObject<Block> Groove;
+    public static final RegistryObject<Block> MeshGroove;
+    public static final RegistryObject<Block> ThatchedRoof45;
 
+    public static final RegistryObject<Block> ThatchedRoof225;
+    public static final RegistryObject<Block> IbushiKawaraRoof45;
+
+    public static final RegistryObject<Block> IbushiKawaraRoof225;
+    public static final RegistryObject<Block> CopperKawaraRoof45;
+
+    public static final RegistryObject<Block> CopperKawaraRoof225;
+    public static final RegistryObject<Block> CupricOxideKawaraRoof45;
+
+    public static final RegistryObject<Block> CupricOxideKawaraRoof225;
 
     public BlocksRegister() {
     }
@@ -799,11 +819,34 @@ public class BlocksRegister {
         ThatchedBlock = BLOCKS.register("thatched_block", () -> {return new Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).sound(SoundType.GRASS).harvestLevel(0).strength(0.5F, 3.0F));});
         ThatchedSlab = BLOCKS.register("thatched_slab", () -> {return new SlabBlock(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).sound(SoundType.GRASS).harvestLevel(0).strength(0.5F, 3.0F).dynamicShape());});
         ThatchedStairs = BLOCKS.register("thatched_stairs", () -> {return new StairsBlock(((Block)ThatchedBlock.get()).defaultBlockState(), AbstractBlock.Properties.of(Material.GRASS, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).sound(SoundType.GRASS).harvestLevel(0).strength(0.5F, 3.0F));});
+        Concrete = BLOCKS.register("concrete", () -> {return new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F));});
+        ConcreteSlab = BLOCKS.register("concrete_slab", () -> {return new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1F, 10.0F).dynamicShape());});
+        ConcreteStairs = BLOCKS.register("concrete_stairs", () -> {return new StairsBlock(((Block)Concrete.get()).defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).requiresCorrectToolForDrops().harvestLevel(0).strength(1F, 10.0F));});
+        DirtyConcrete = BLOCKS.register("dirty_concrete", () -> {return new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F));});
+        DirtyConcreteSlab = BLOCKS.register("dirty_concrete_slab", () -> {return new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1F, 10.0F).dynamicShape());});
+        DirtyConcreteStairs = BLOCKS.register("dirty_concrete_stairs", () -> {return new StairsBlock(((Block)DirtyConcrete.get()).defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).requiresCorrectToolForDrops().harvestLevel(0).strength(1F, 10.0F));});
+        LidlessGroove = BLOCKS.register("lidless_groove", () -> {return new GrooveBlock(false,AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F));});
+        Groove = BLOCKS.register("groove", () -> {return new GrooveBlock(true,AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F));});
+        MeshGroove = BLOCKS.register("mesh_groove", () -> {return new GrooveBlock(true,AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F));});
+        ThatchedRoof45 = BLOCKS.register("thatched_roof_45", () -> {return new Roof45Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).sound(SoundType.GRASS).harvestLevel(0).strength(0.5F, 3.0F).noOcclusion().dynamicShape());});
+        ThatchedRoof225 = BLOCKS.register("thatched_roof_225", () -> {return new Roof225Block(AbstractBlock.Properties.of(Material.GRASS, MaterialColor.COLOR_GRAY).harvestTool(ToolType.SHOVEL).sound(SoundType.GRASS).harvestLevel(0).strength(0.5F, 3.0F).noOcclusion().dynamicShape());});
+        IbushiKawaraRoof45 = BLOCKS.register("ibushi_kawara_roof_45", () -> {return new Roof45Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
+        IbushiKawaraRoof225 = BLOCKS.register("ibushi_kawara_roof_225", () -> {return new Roof225Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
+        CopperKawaraRoof45 = BLOCKS.register("copper_kawara_roof_45", () -> {return new Roof45Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.DIRT).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
+        CopperKawaraRoof225 = BLOCKS.register("copper_kawara_roof_225", () -> {return new Roof225Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.DIRT).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
+        CupricOxideKawaraRoof45 = BLOCKS.register("cupric_oxide_kawara_roof_45", () -> {return new Roof45Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.EMERALD).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
+        CupricOxideKawaraRoof225 = BLOCKS.register("cupric_oxide_kawara_roof_225", () -> {return new Roof225Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.EMERALD).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
+
+
+
     }
     private static Boolean never(BlockState p_235427_0_, IBlockReader p_235427_1_, BlockPos p_235427_2_, EntityType<?> p_235427_3_) {
         return (boolean)false;
     }
     private static boolean always(BlockState p_235426_0_, IBlockReader p_235426_1_, BlockPos p_235426_2_) {
         return true;
+    }
+    private static boolean never(BlockState p_235436_0_, IBlockReader p_235436_1_, BlockPos p_235436_2_) {
+        return false;
     }
 }

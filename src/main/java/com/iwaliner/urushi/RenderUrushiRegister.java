@@ -52,6 +52,7 @@ public class RenderUrushiRegister {
         RenderTypeLookup.setRenderLayer(BlocksRegister.BlackUrushiShojiPane.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(BlocksRegister.SoyCrop.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlocksRegister.Kitsunebi.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.MeshGroove.get(), RenderType.cutout());
     }
 
 }

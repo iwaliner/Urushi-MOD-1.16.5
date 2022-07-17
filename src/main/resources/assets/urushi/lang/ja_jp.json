@@ -232,5 +232,22 @@
    "container.foxhopper":"改良型ホッパー",
    "item.urushi.carp": "鯉",
    "item.urushi.sweetfish": "鮎",
-   "item.urushi.goldfish": "金魚"
+   "item.urushi.goldfish": "金魚",
+   "block.urushi.concrete": "コンクリート",
+   "block.urushi.concrete_slab": "コンクリートのハーフブロック",
+   "block.urushi.concrete_stairs": "コンクリートの階段",
+   "block.urushi.dirty_concrete": "汚れたコンクリート",
+   "block.urushi.dirty_concrete_slab": "汚れたコンクリートのハーフブロック",
+   "block.urushi.dirty_concrete_stairs": "汚れたコンクリートの階段",
+   "block.urushi.lidless_groove": "蓋なしの側溝",
+   "block.urushi.groove": "側溝",
+   "block.urushi.mesh_groove": "網付き側溝",
+   "block.urushi.thatched_roof_45": "茅の屋根(45°)",
+   "block.urushi.thatched_roof_225": "茅の屋根(22.5°)",
+   "block.urushi.ibushi_kawara_roof_45": "いぶし瓦の屋根(45°)",
+   "block.urushi.ibushi_kawara_roof_225": "いぶし瓦の屋根(22.5°)",
+   "block.urushi.copper_kawara_roof_45": "銅瓦の屋根(45°)",
+   "block.urushi.copper_kawara_roof_225": "銅瓦の屋根(22.5°)",
+   "block.urushi.cupric_oxide_kawara_roof_45": "緑青瓦の屋根(45°)",
+   "block.urushi.cupric_oxide_kawara_roof_225": "緑青瓦の屋根(22.5°)"
 }
