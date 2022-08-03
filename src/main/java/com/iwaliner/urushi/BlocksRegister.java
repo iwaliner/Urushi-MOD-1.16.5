@@ -231,6 +231,28 @@ public class BlocksRegister {
     public static final RegistryObject<Block> CupricOxideKawaraRoof45;
 
     public static final RegistryObject<Block> CupricOxideKawaraRoof225;
+    public static final RegistryObject<Block> BambooCharcoalBlock;
+    public static final RegistryObject<Block> OakFramedSikkui;
+    public static final RegistryObject<Block> SpruceFramedSikkui;
+    public static final RegistryObject<Block> BirchFramedSikkui;
+    public static final RegistryObject<Block> JungleFramedSikkui;
+    public static final RegistryObject<Block> AcaciaFramedSikkui;
+    public static final RegistryObject<Block> DarkOakFramedSikkui;
+    public static final RegistryObject<Block> JapaneseApricotFramedSikkui;
+    public static final RegistryObject<Block> SakuraFramedSikkui;
+    public static final RegistryObject<Block> CypressFramedSikkui;
+    public static final RegistryObject<Block> RedUrushiFramedSikkui;
+    public static final RegistryObject<Block> BlackUrushiFramedSikkui;
+    public static final RegistryObject<Block> ConnectableGlass;
+    public static final RegistryObject<Block> ConnectableGlassPane;
+    public static final RegistryObject<Block> MetalFramedGlass;
+    public static final RegistryObject<Block> MetalFramedGlassPane;
+    public static final RegistryObject<Block> OilExtractor;
+    public static final RegistryObject<Block> Fryer;
+    public static final RegistryObject<Block> RoughStone;
+    public static final RegistryObject<Block> RoughStoneSlab;
+    public static final RegistryObject<Block> RoughStoneStairs;
+    public static final RegistryObject<Block> RoughStoneWall;
 
     public BlocksRegister() {
     }
@@ -836,8 +858,28 @@ public class BlocksRegister {
         CopperKawaraRoof225 = BLOCKS.register("copper_kawara_roof_225", () -> {return new Roof225Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.DIRT).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
         CupricOxideKawaraRoof45 = BLOCKS.register("cupric_oxide_kawara_roof_45", () -> {return new Roof45Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.EMERALD).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
         CupricOxideKawaraRoof225 = BLOCKS.register("cupric_oxide_kawara_roof_225", () -> {return new Roof225Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.EMERALD).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).noOcclusion().dynamicShape());});
-
-
+        BambooCharcoalBlock = BLOCKS.register("bamboo_charcoal_block", () -> {return new Block(AbstractBlock.Properties.of(Material.WOOD, MaterialColor.WOOD).harvestTool(ToolType.AXE).sound(SoundType.BAMBOO).harvestLevel(0).strength(0.5F, 10.0F));});
+        OakFramedSikkui = BLOCKS.register("oak_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        SpruceFramedSikkui = BLOCKS.register("spruce_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        BirchFramedSikkui = BLOCKS.register("birch_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        JungleFramedSikkui = BLOCKS.register("jungle_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        AcaciaFramedSikkui = BLOCKS.register("acacia_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        DarkOakFramedSikkui = BLOCKS.register("dark_oak_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        JapaneseApricotFramedSikkui = BLOCKS.register("japanese_apricot_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        SakuraFramedSikkui = BLOCKS.register("sakura_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        CypressFramedSikkui = BLOCKS.register("cypress_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        RedUrushiFramedSikkui = BLOCKS.register("red_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        BlackUrushiFramedSikkui = BLOCKS.register("black_framed_plaster", () -> {return new FramedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.SNOW).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).strength(1.0F, 10.0F));});
+        ConnectableGlass = BLOCKS.register("connectable_glass", () -> {return new ConnectableGlassBlock(AbstractBlock.Properties.of(Material.GLASS).sound(SoundType.GLASS).harvestLevel(0).strength(0.3F, 3.0F).noOcclusion().isValidSpawn(BlocksRegister::never).isRedstoneConductor(BlocksRegister::never).isSuffocating(BlocksRegister::never).isViewBlocking(BlocksRegister::never));});
+        ConnectableGlassPane = BLOCKS.register("connectable_glass_pane", () -> {return new ConnectableGlassPaneBlock(AbstractBlock.Properties.of(Material.GLASS).sound(SoundType.GLASS).harvestLevel(0).strength(0.3F, 3.0F).noOcclusion());});
+        MetalFramedGlass = BLOCKS.register("metal_framed_glass", () -> {return new ConnectableGlassBlock(AbstractBlock.Properties.of(Material.GLASS).sound(SoundType.GLASS).harvestLevel(0).strength(0.3F, 3.0F).noOcclusion().isValidSpawn(BlocksRegister::never).isRedstoneConductor(BlocksRegister::never).isSuffocating(BlocksRegister::never).isViewBlocking(BlocksRegister::never));});
+        MetalFramedGlassPane = BLOCKS.register("metal_framed_glass_pane", () -> {return new ConnectableGlassPaneBlock(AbstractBlock.Properties.of(Material.GLASS).sound(SoundType.GLASS).harvestLevel(0).strength(0.3F, 3.0F).noOcclusion());});
+        OilExtractor = BLOCKS.register("oil_extractor", () -> {return new OilExtractorBlock(AbstractBlock.Properties.of(Material.WOOD).sound(SoundType.WOOD).harvestLevel(0).strength(1F, 3.0F));});
+        Fryer = BLOCKS.register("fryer", () -> {return new FryerBlock(AbstractBlock.Properties.of(Material.METAL).sound(SoundType.METAL).harvestLevel(0).requiresCorrectToolForDrops().strength(1F, 10.0F).noOcclusion().dynamicShape().isViewBlocking(BlocksRegister::never));});
+        RoughStone = BLOCKS.register("rough_stone", () -> {return new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F));});
+        RoughStoneSlab = BLOCKS.register("rough_stone_slab", () -> {return new SlabBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F).dynamicShape());});
+        RoughStoneStairs = BLOCKS.register("rough_stone_stairs", () -> {return new StairsBlock(((Block)RoughStone.get()).defaultBlockState(), AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F));});
+        RoughStoneWall = BLOCKS.register("rough_stone_wall", () -> {return new WallBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.STONE).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).harvestLevel(0).requiresCorrectToolForDrops().strength(1.0F, 10.0F));});
 
     }
     private static Boolean never(BlockState p_235427_0_, IBlockReader p_235427_1_, BlockPos p_235427_2_, EntityType<?> p_235427_3_) {

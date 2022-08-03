@@ -1,10 +1,15 @@
 package com.iwaliner.urushi;
+import com.iwaliner.urushi.RecipeType.RecipeTypeRegister;
 import com.iwaliner.urushi.World.OreGen;
 import com.iwaliner.urushi.World.TreeGenerator;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.IStatFormatter;
+import net.minecraft.stats.Stats;
+import net.minecraft.tags.*;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -35,6 +40,13 @@ import java.util.function.Supplier;
 @Mod("urushi")
 public class ModCore_Urushi {
     public static final String MOD_ID = "urushi";
+    public static final ResourceLocation INTERACT_WITH_FRYER = makeCustomStat("interact_with_fryer", IStatFormatter.DEFAULT);
+    private static ResourceLocation makeCustomStat(String p_199084_0_, IStatFormatter p_199084_1_) {
+        ResourceLocation resourcelocation = new ResourceLocation(p_199084_0_);
+        Registry.register(Registry.CUSTOM_STAT, p_199084_0_, resourcelocation);
+        Stats.CUSTOM.get(resourcelocation, p_199084_1_);
+        return resourcelocation;
+    }
 
     /**クリエイティブタブを登録*/
     public static final ItemGroup TabUrushi=new TabUrushi("urushi");
@@ -56,6 +68,12 @@ public class ModCore_Urushi {
         /**アイテムを登録*/
         ItemsRegister.register(modEventBus);
 
+        /**レシピタイプを登録*/
+        RecipeTypeRegister.register(modEventBus);
+
+        /**GUI付きブロック内のコンテナを登録*/
+        ContainerRegister.register(modEventBus);
+
         /**必須*/
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -64,6 +82,7 @@ public class ModCore_Urushi {
 
         /**鉱石を生成*/
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGen::addOres);
+
 
         /**コンフィグを登録*/
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON,ConfigUrushi.spec,"urushi.toml");
@@ -120,7 +139,12 @@ public class ModCore_Urushi {
             event.setBurnTime(200);
         }else if(event.getItemStack().getItem()==ItemsRegister.CypressBark.get()) {
             event.setBurnTime(200);
+        }else if(event.getItemStack().getItem()==ItemsRegister.BambooCharcoalBlock.get()) {
+            event.setBurnTime(16000);
         }
+        /*else if(event.getItemStack().getItem()==ItemsRegister.VegetableOil.get()) {
+            event.setBurnTime(800);
+        }*/
     }
 
     /**油揚げを狐が食べると狐火に*/

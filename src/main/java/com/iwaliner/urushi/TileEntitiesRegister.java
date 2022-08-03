@@ -2,6 +2,7 @@ package com.iwaliner.urushi;
 
 
 import com.iwaliner.urushi.TileEntity.FoxHopperTileEntity;
+import com.iwaliner.urushi.TileEntity.FryerTileEntity;
 import com.iwaliner.urushi.TileEntity.WoodenCabinetrySlabTileEntity;
 import com.iwaliner.urushi.TileEntity.WoodenCabinetryTileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -20,6 +21,7 @@ public class TileEntitiesRegister {
     public static final RegistryObject<TileEntityType<WoodenCabinetryTileEntity>>  WoodenCabinetryTile=Tiles.register("wooden_cabinetry", () -> TileEntityType.Builder.of(WoodenCabinetryTileEntity::new, BlocksRegister.WoodenCabinetry.get()).build(null));
     public static final RegistryObject<TileEntityType<WoodenCabinetrySlabTileEntity>>  WoodenCabinetrySlabTile=Tiles.register("wooden_cabinetry_slab", () -> TileEntityType.Builder.of(WoodenCabinetrySlabTileEntity::new, BlocksRegister.WoodenCabinetrySlab.get()).build(null));
     public static final RegistryObject<TileEntityType<FoxHopperTileEntity>>  FoxHopperTile=Tiles.register("fox_hopper", () -> TileEntityType.Builder.of(FoxHopperTileEntity::new, BlocksRegister.FoxHopper.get()).build(null));
+    public static final RegistryObject<TileEntityType<FryerTileEntity>>  FryerTile=Tiles.register("fryer", () -> TileEntityType.Builder.of(FryerTileEntity::new, BlocksRegister.Fryer.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         Tiles.register(eventBus);

@@ -2,6 +2,7 @@ package com.iwaliner.urushi.Block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.FallingBlock;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
@@ -14,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class RawUrushiLayerBlock extends Block {
+public class RawUrushiLayerBlock extends FallingBlock {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
 
     public RawUrushiLayerBlock(Properties p_i48440_1_) {

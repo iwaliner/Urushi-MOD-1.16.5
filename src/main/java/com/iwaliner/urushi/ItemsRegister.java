@@ -263,8 +263,30 @@ public class ItemsRegister {
     public static final RegistryObject<Item> ItemBlockCopperKawaraRoof225;
     public static final RegistryObject<Item> ItemBlockCupricOxideKawaraRoof45;
     public static final RegistryObject<Item> ItemBlockCupricOxideKawaraRoof225;
-
-
+    public static final RegistryObject<Item> BambooCharcoalBlock;
+    public static final RegistryObject<Item> OakFramedSikkui;
+    public static final RegistryObject<Item> SpruceFramedSikkui;
+    public static final RegistryObject<Item> BirchFramedSikkui;
+    public static final RegistryObject<Item> JungleFramedSikkui;
+    public static final RegistryObject<Item> AcaciaFramedSikkui;
+    public static final RegistryObject<Item> DarkOakFramedSikkui;
+    public static final RegistryObject<Item> JapaneseApricotFramedSikkui;
+    public static final RegistryObject<Item> SakuraFramedSikkui;
+    public static final RegistryObject<Item> CypressFramedSikkui;
+    public static final RegistryObject<Item> RedUrushiFramedSikkui;
+    public static final RegistryObject<Item> BlackUrushiFramedSikkui;
+    public static final RegistryObject<Item> ConnectableGlass;
+    public static final RegistryObject<Item> ConnectableGlassPane;
+    public static final RegistryObject<Item> MetalFramedGlass;
+    public static final RegistryObject<Item> MetalFramedGlassPane;
+    public static final RegistryObject<Item> OilExtractor;
+    public static final RegistryObject<Item> VegetableOil;
+    public static final RegistryObject<Item> Fryer;
+    public static final RegistryObject<Item> Karaage;
+    public static final RegistryObject<Item> RoughStone;
+    public static final RegistryObject<Item> RoughStoneSlab;
+    public static final RegistryObject<Item> RoughStoneStairs;
+    public static final RegistryObject<Item> RoughStoneWall;
     public ItemsRegister() {
     }
 
@@ -841,78 +863,30 @@ public class ItemsRegister {
         ItemBlockOakShojiPane = ITEMS.register("oak_shoji_pane", () -> {
             return new BlockItem((Block) BlocksRegister.OakShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
         });
-        ItemBlockSpruceShojiPane = ITEMS.register("spruce_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.SpruceShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockBirchShojiPane = ITEMS.register("birch_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.BirchShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockJungleShojiPane = ITEMS.register("jungle_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.JungleShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockAcaciaShojiPane = ITEMS.register("acacia_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.AcaciaShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockDarkOakShojiPane = ITEMS.register("dark_oak_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.DarkOakShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockJapaneseApricotShojiPane= ITEMS.register("japanese_apricot_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.JapaneseApricotShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockSakuraShojiPane = ITEMS.register("sakura_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.SakuraShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockCypressShojiPane = ITEMS.register("cypress_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.CypressShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockRedUrushiShojiPane = ITEMS.register("red_urushi_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.RedUrushiShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockBlackUrushiShojiPane = ITEMS.register("black_urushi_shoji_pane", () -> {
-            return new BlockItem((Block) BlocksRegister.BlackUrushiShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockOakShoji = ITEMS.register("oak_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.OakShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockSpruceShoji = ITEMS.register("spruce_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.SpruceShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockBirchShoji = ITEMS.register("birch_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.BirchShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockJungleShoji = ITEMS.register("jungle_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.JungleShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockAcaciaShoji = ITEMS.register("acacia_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.AcaciaShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockDarkOakShoji = ITEMS.register("dark_oak_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.DarkOakShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockJapaneseApricotShoji = ITEMS.register("japanese_apricot_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.JapaneseApricotShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockSakuraShoji = ITEMS.register("sakura_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.SakuraShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockCypressShoji = ITEMS.register("cypress_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.CypressShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockRedUrushiShoji = ITEMS.register("red_urushi_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.RedUrushiShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        ItemBlockBlackUrushiShoji = ITEMS.register("black_urushi_shoji", () -> {
-            return new BlockItem((Block) BlocksRegister.BlackUrushiShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        SoyCrop = ITEMS.register("soy_crop", () -> {
-            return new BlockItem((Block) BlocksRegister.SoyCrop.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
-        });
-        Tofu = ITEMS.register("tofu", () -> {
-            return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Tofu));
-        });
-        AburaAge = ITEMS.register("abura_age", () -> {
-            return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.AburaAge));
-        });
+        ItemBlockSpruceShojiPane = ITEMS.register("spruce_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.SpruceShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockBirchShojiPane = ITEMS.register("birch_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.BirchShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockJungleShojiPane = ITEMS.register("jungle_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.JungleShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockAcaciaShojiPane = ITEMS.register("acacia_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.AcaciaShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockDarkOakShojiPane = ITEMS.register("dark_oak_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.DarkOakShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockJapaneseApricotShojiPane= ITEMS.register("japanese_apricot_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.JapaneseApricotShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockSakuraShojiPane = ITEMS.register("sakura_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.SakuraShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockCypressShojiPane = ITEMS.register("cypress_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.CypressShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockRedUrushiShojiPane = ITEMS.register("red_urushi_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.RedUrushiShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockBlackUrushiShojiPane = ITEMS.register("black_urushi_shoji_pane", () -> {return new BlockItem((Block) BlocksRegister.BlackUrushiShojiPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockOakShoji = ITEMS.register("oak_shoji", () -> {return new BlockItem((Block) BlocksRegister.OakShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockSpruceShoji = ITEMS.register("spruce_shoji", () -> {return new BlockItem((Block) BlocksRegister.SpruceShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockBirchShoji = ITEMS.register("birch_shoji", () -> {return new BlockItem((Block) BlocksRegister.BirchShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockJungleShoji = ITEMS.register("jungle_shoji", () -> {return new BlockItem((Block) BlocksRegister.JungleShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockAcaciaShoji = ITEMS.register("acacia_shoji", () -> {return new BlockItem((Block) BlocksRegister.AcaciaShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockDarkOakShoji = ITEMS.register("dark_oak_shoji", () -> {return new BlockItem((Block) BlocksRegister.DarkOakShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockJapaneseApricotShoji = ITEMS.register("japanese_apricot_shoji", () -> {return new BlockItem((Block) BlocksRegister.JapaneseApricotShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockSakuraShoji = ITEMS.register("sakura_shoji", () -> {return new BlockItem((Block) BlocksRegister.SakuraShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockCypressShoji = ITEMS.register("cypress_shoji", () -> {return new BlockItem((Block) BlocksRegister.CypressShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockRedUrushiShoji = ITEMS.register("red_urushi_shoji", () -> {return new BlockItem((Block) BlocksRegister.RedUrushiShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ItemBlockBlackUrushiShoji = ITEMS.register("black_urushi_shoji", () -> {return new BlockItem((Block) BlocksRegister.BlackUrushiShoji.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        SoyCrop = ITEMS.register("soy_crop", () -> {return new BlockItem((Block) BlocksRegister.SoyCrop.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        Tofu = ITEMS.register("tofu", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Tofu));});
+        AburaAge = ITEMS.register("abura_age", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.AburaAge));});
         Kitsunebi = ITEMS.register("kitsunebi", () -> {return new KitsunebiItem((new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
         ItemBlockFoxHopper = ITEMS.register("fox_hopper", () -> {return new BlockItem((Block) BlocksRegister.FoxHopper.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
         ItemBlockSandCoast = ITEMS.register("sand_coast", () -> {return new BlockItem((Block) BlocksRegister.SandCoast.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
@@ -943,6 +917,30 @@ public class ItemsRegister {
         ItemBlockCopperKawaraRoof225 = ITEMS.register("copper_kawara_roof_225", () -> {return new BlockItem((Block) BlocksRegister.CopperKawaraRoof225.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
         ItemBlockCupricOxideKawaraRoof45 = ITEMS.register("cupric_oxide_kawara_roof_45", () -> {return new BlockItem((Block) BlocksRegister.CupricOxideKawaraRoof45.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
         ItemBlockCupricOxideKawaraRoof225 = ITEMS.register("cupric_oxide_kawara_roof_225", () -> {return new BlockItem((Block) BlocksRegister.CupricOxideKawaraRoof225.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        BambooCharcoalBlock = ITEMS.register("bamboo_charcoal_block", () -> {return new BlockItem((Block) BlocksRegister.BambooCharcoalBlock.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        OakFramedSikkui = ITEMS.register("oak_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.OakFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        SpruceFramedSikkui = ITEMS.register("spruce_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.SpruceFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        BirchFramedSikkui = ITEMS.register("birch_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.BirchFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        JungleFramedSikkui = ITEMS.register("jungle_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.JungleFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        AcaciaFramedSikkui = ITEMS.register("acacia_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.AcaciaFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        DarkOakFramedSikkui = ITEMS.register("dark_oak_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.DarkOakFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        JapaneseApricotFramedSikkui = ITEMS.register("japanese_apricot_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.JapaneseApricotFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        SakuraFramedSikkui = ITEMS.register("sakura_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.SakuraFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        CypressFramedSikkui = ITEMS.register("cypress_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.CypressFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        RedUrushiFramedSikkui = ITEMS.register("red_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.RedUrushiFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        BlackUrushiFramedSikkui = ITEMS.register("black_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.BlackUrushiFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ConnectableGlass = ITEMS.register("connectable_glass", () -> {return new BlockItem((Block) BlocksRegister.ConnectableGlass.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        ConnectableGlassPane = ITEMS.register("connectable_glass_pane", () -> {return new BlockItem((Block) BlocksRegister.ConnectableGlassPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        MetalFramedGlass = ITEMS.register("metal_framed_glass", () -> {return new BlockItem((Block) BlocksRegister.MetalFramedGlass.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        MetalFramedGlassPane = ITEMS.register("metal_framed_glass_pane", () -> {return new BlockItem((Block) BlocksRegister.MetalFramedGlassPane.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        OilExtractor = ITEMS.register("oil_extractor", () -> {return new BlockItem((Block) BlocksRegister.OilExtractor.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        VegetableOil = ITEMS.register("vegetable_oil", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        Fryer = ITEMS.register("fryer", () -> {return new BlockItem((Block) BlocksRegister.Fryer.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        Karaage = ITEMS.register("karaage", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Karaage));});
+        RoughStone = ITEMS.register("rough_stone", () -> {return new BlockItem((Block) BlocksRegister.RoughStone.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        RoughStoneSlab = ITEMS.register("rough_stone_slab", () -> {return new BlockItem((Block) BlocksRegister.RoughStoneSlab.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        RoughStoneStairs = ITEMS.register("rough_stone_stairs", () -> {return new BlockItem((Block) BlocksRegister.RoughStoneStairs.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+        RoughStoneWall = ITEMS.register("rough_stone_wall", () -> {return new BlockItem((Block) BlocksRegister.RoughStoneWall.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
 
 
     }
