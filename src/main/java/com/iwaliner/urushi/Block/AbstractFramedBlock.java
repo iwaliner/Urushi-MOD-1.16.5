@@ -4,7 +4,9 @@ import com.google.common.collect.Maps;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -13,9 +15,17 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 
 public class AbstractFramedBlock extends Block {
@@ -138,6 +148,13 @@ public class AbstractFramedBlock extends Block {
                 .setValue(DOWN, Boolean.valueOf(this.connectsTo(thisState, bState)))
                 .setValue(VARIANT, Boolean.valueOf(p_196258_1_.getPlayer().isSuppressingBounce()))
                 ;
+
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable IBlockReader reader, List<ITextComponent> list, ITooltipFlag flag) {
+        list.add((new TranslationTextComponent("info.urushi.framed_block1" )).withStyle(TextFormatting.GRAY));
+        list.add((new TranslationTextComponent("info.urushi.framed_block2" )).withStyle(TextFormatting.GRAY));
 
     }
 }

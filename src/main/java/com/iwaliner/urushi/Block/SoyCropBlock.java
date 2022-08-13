@@ -36,6 +36,7 @@ public class SoyCropBlock extends CropsBlock {
         if(state.getBlock() instanceof CropsBlock){
             if(world.getBlockState(pos).getValue(AGE)==Integer.valueOf(4)) {
                 world.destroyBlock(pos, true);
+                world.setBlockAndUpdate(pos,this.defaultBlockState());
                 return ActionResultType.SUCCESS;
             }
         }

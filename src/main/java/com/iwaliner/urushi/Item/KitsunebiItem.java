@@ -5,6 +5,7 @@ import com.iwaliner.urushi.Entity.KitsunebiEntity;
 import com.iwaliner.urushi.ItemsRegister;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SnowballEntity;
@@ -15,8 +16,15 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
 
 public class KitsunebiItem extends Item {
@@ -82,5 +90,14 @@ public class KitsunebiItem extends Item {
       }else{
          return  ActionResultType.FAIL;
       }
+   }
+   @OnlyIn(Dist.CLIENT)
+   public void appendHoverText(ItemStack itemStack, @Nullable World world, List<ITextComponent> list, ITooltipFlag flag) {
+     list.add((new TranslationTextComponent("info.urushi.kitsunebi" )).withStyle(TextFormatting.GRAY));
+      list.add((new TranslationTextComponent("info.urushi.kitsunebi2" )).withStyle(TextFormatting.GRAY));
+
+   }
+   public boolean isFoil(ItemStack p_77636_1_) {
+      return true;
    }
 }

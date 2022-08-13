@@ -1,5 +1,6 @@
 package com.iwaliner.urushi;
 
+import com.iwaliner.urushi.Container.DoubledWoodenCabinetryContainer;
 import com.iwaliner.urushi.Container.FryerContainer;
 
 import net.minecraft.inventory.container.ContainerType;
@@ -16,6 +17,9 @@ public class ContainerRegister  {
 
     public static final RegistryObject<ContainerType<FryerContainer>> FryerContainer = Containers.register("fryer", () -> IForgeContainerType.create((windowId, inv, data) -> {
         return new FryerContainer(windowId, inv);
+    }));
+    public static final RegistryObject<ContainerType<DoubledWoodenCabinetryContainer>> DoubledWoodenCabinetryContainer = Containers.register("doubled_wooden_cabinetry", () -> IForgeContainerType.create((windowId, inv, data) -> {
+        return new DoubledWoodenCabinetryContainer(windowId,inv);
     }));
 
 

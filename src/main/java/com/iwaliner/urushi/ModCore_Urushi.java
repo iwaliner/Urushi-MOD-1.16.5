@@ -1,18 +1,23 @@
 package com.iwaliner.urushi;
+import com.iwaliner.urushi.Block.IronIngotBlock;
 import com.iwaliner.urushi.RecipeType.RecipeTypeRegister;
 import com.iwaliner.urushi.World.OreGen;
 import com.iwaliner.urushi.World.TreeGenerator;
+import jeresources.proxy.CommonProxy;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.FoxEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.IStatFormatter;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.*;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
@@ -21,12 +26,16 @@ import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -155,23 +164,47 @@ public class ModCore_Urushi {
         }
     }
 
+    /**玉鋼作るときに右クリックおしっぱだとブロックがドロップして壊れる*/
+    @SubscribeEvent
+    public void HammerCancelEvent(PlayerInteractEvent.RightClickBlock event) {
+        if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof IronIngotBlock){
+            {
+                if(event.getEntity() instanceof PlayerEntity) {
+                   if( event.getPlayer().getCooldowns().isOnCooldown(ItemsRegister.Hammer.get())) {
+                      event.getWorld().destroyBlock(event.getPos(),true);
+                            event.setCanceled(true);
+                    }
+                }
+            }
+        }
+    }
+    @SubscribeEvent
+    public void PlayerSpeedEvent(EntityEvent.EnteringChunk event) {
+        if(ConfigUrushi.TurnOnSpeedUp.get()) {
+            if (event.getEntity() instanceof PlayerEntity) {
+                PlayerEntity entityPlayer = (PlayerEntity) event.getEntity();
+                entityPlayer.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.116D);
+                entityPlayer.getAttributes().save();
+            }
+        }
+    }
+    @SubscribeEvent
+    public void GrassDropEvent(BlockEvent.BreakEvent event) {
+        if (!event.getPlayer().isCreative() && (event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.FERN || event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.TALL_GRASS || event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.GRASS) ) {
+              if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
+                        ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(BlocksRegister.RiceCrop.get()));
+                        event.getWorld().addFreshEntity(entity);
+                    } else if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
+                        ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(BlocksRegister.SoyCrop.get()));
+                        event.getWorld().addFreshEntity(entity);
+                    } else if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
+                        ItemEntity entity = new ItemEntity((World) event.getWorld(),(double) event.getPos().getX(),(double)event.getPos().getY(), (double)event.getPos().getZ(), new ItemStack(BlocksRegister.AzukiCrop.get()));
+                        event.getWorld().addFreshEntity(entity);
+                    }
+                }
 
 
-   /* @SubscribeEvent
-    public static void onRegisterEntities(final RegistryEvent.Register  entityRegisterEvent) {
-
-        GlobalEntityTypeAttributes.put(EntityRegister.CarpEntity.get(),
-                CarpEntity.createAttributes()
-                        .add(Attributes.MAX_HEALTH, 5.0D)
-                        .add(Attributes.ATTACK_DAMAGE, 1.0D)
-                        .add(Attributes.ATTACK_SPEED, 2.0D)
-                        .add(Attributes.MOVEMENT_SPEED, 0.5D)
-                        .build());
-
-
-    }*/
-
-
+    }
 /*
     @SubscribeEvent
     public void LootTableEvent(LootTableLoadEvent event) {
@@ -180,15 +213,7 @@ public class ModCore_Urushi {
                     .add(TableLootEntry.lootTableReference(new ResourceLocation(MOD_ID, "blocks/grass_drops")))
                     .name("sf_grass_drops").build());
     }*/
-    /* @SubscribeEvent
-    public void PlayerSpeedEvent(EntityEvent.EnteringChunk event) {
-        if (event.getEntity() instanceof PlayerEntity) {
-            PlayerEntity entityPlayer = (PlayerEntity)event.getEntity();
-            entityPlayer.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.11500000208616257D);
-            entityPlayer.getAttributes().save();
-        }
-
-    }
+    /*
 
     @SubscribeEvent
     public void IceWaterEvent(BlockEvent.BreakEvent event) {

@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 
 
 public class TileEntitiesRegister {
-    private static final Logger LOGGER = LogManager.getLogger();
     public static final DeferredRegister<TileEntityType<?>> Tiles = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, ModCore_Urushi.MOD_ID);
     public static final RegistryObject<TileEntityType<WoodenCabinetryTileEntity>>  WoodenCabinetryTile=Tiles.register("wooden_cabinetry", () -> TileEntityType.Builder.of(WoodenCabinetryTileEntity::new, BlocksRegister.WoodenCabinetry.get()).build(null));
     public static final RegistryObject<TileEntityType<WoodenCabinetrySlabTileEntity>>  WoodenCabinetrySlabTile=Tiles.register("wooden_cabinetry_slab", () -> TileEntityType.Builder.of(WoodenCabinetrySlabTileEntity::new, BlocksRegister.WoodenCabinetrySlab.get()).build(null));

@@ -3,6 +3,7 @@ package com.iwaliner.urushi.Block;
 import com.iwaliner.urushi.TileEntity.FoxHopperTileEntity;
 import com.iwaliner.urushi.TileEntity.IFoxHopper;
 import net.minecraft.block.*;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,8 +25,14 @@ import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class FoxHopperBlock extends HopperBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING_HOPPER;
@@ -181,5 +188,9 @@ public class FoxHopperBlock extends HopperBlock {
 
     public boolean isPathfindable(BlockState p_196266_1_, IBlockReader p_196266_2_, BlockPos p_196266_3_, PathType p_196266_4_) {
         return false;
+    }
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable IBlockReader reader, List<ITextComponent> list, ITooltipFlag flag) {
+        list.add((new TranslationTextComponent("info.urushi.fox_hopper" )).withStyle(TextFormatting.GRAY));
     }
 }

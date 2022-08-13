@@ -2,13 +2,21 @@ package com.iwaliner.urushi.Block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class Roof45Block extends HorizonalRotateBlock{
    // private static final VoxelShape ROOT = Block.box(0D, 0.0D, 0D, 16D, 8D, 16D);
@@ -53,5 +61,9 @@ public class Roof45Block extends HorizonalRotateBlock{
     }*/
     public boolean useShapeForLightOcclusion(BlockState p_220074_1_) {
         return true;
+    }
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable IBlockReader reader, List<ITextComponent> list, ITooltipFlag flag) {
+        list.add((new TranslationTextComponent("info.urushi.roof_45" )).withStyle(TextFormatting.GRAY));
     }
 }

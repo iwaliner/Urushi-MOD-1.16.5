@@ -21,6 +21,8 @@ public class FoodsUrushi {
     public static final Food Goldfish = (new Food.Builder()).nutrition(1).saturationMod(0.2F).build();
 
     public static final Food Karaage = (new Food.Builder()).nutrition(8).saturationMod(0.8F).build();
+    public static final Food TKG = (new Food.Builder()).nutrition(10).saturationMod(1.2F).build();
+    public static final Food KusaMochi = (new Food.Builder()).nutrition(8).saturationMod(1.0F).build();
 
 
 

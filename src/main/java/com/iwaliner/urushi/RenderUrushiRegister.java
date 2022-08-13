@@ -58,6 +58,13 @@ public class RenderUrushiRegister {
         RenderTypeLookup.setRenderLayer(BlocksRegister.MetalFramedGlass.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlocksRegister.MetalFramedGlassPane.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlocksRegister.Fryer.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.DeepBlueNoren.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.MenOnsenNoren.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.WomenOnsenNoren.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.RedNoren.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.CyanNoren.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.MagentaNoren.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.SushiNoren.get(), RenderType.cutout());
 
     }
 

@@ -7,12 +7,14 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BambooLeaves;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
@@ -31,9 +33,7 @@ public class JapaneseTimberBambooBlock extends Block implements net.minecraftfor
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
     }
 
-    public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
-        return SHAPE;
-    }
+
 
     public void tick(BlockState p_225534_1_, ServerWorld p_225534_2_, BlockPos p_225534_3_, Random p_225534_4_) {
         if (!p_225534_1_.canSurvive(p_225534_2_, p_225534_3_)) {
@@ -118,5 +118,15 @@ public class JapaneseTimberBambooBlock extends Block implements net.minecraftfor
     public PushReaction getPistonPushReaction(BlockState p_149656_1_) {
         return PushReaction.DESTROY;
     }
-
+    public AbstractBlock.OffsetType getOffsetType() {
+        return AbstractBlock.OffsetType.XZ;
+    }
+    public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+       Vector3d vector3d = p_220053_1_.getOffset(p_220053_2_, p_220053_3_);
+        return SHAPE.move(vector3d.x, vector3d.y, vector3d.z);
+    }
+    public VoxelShape getCollisionShape(BlockState p_220071_1_, IBlockReader p_220071_2_, BlockPos p_220071_3_, ISelectionContext p_220071_4_) {
+        Vector3d vector3d = p_220071_1_.getOffset(p_220071_2_, p_220071_3_);
+        return SHAPE.move(vector3d.x, vector3d.y, vector3d.z);
+    }
 }

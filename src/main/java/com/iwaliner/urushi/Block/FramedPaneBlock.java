@@ -3,7 +3,9 @@ package com.iwaliner.urushi.Block;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -15,9 +17,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 
 public class FramedPaneBlock extends HorizonalRotateBlock{
@@ -29,7 +36,7 @@ public class FramedPaneBlock extends HorizonalRotateBlock{
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
-    public static final BooleanProperty VARIANT = BooleanProperty.create("variant");
+    public static final BooleanProperty VARIANT = AbstractFramedBlock.VARIANT;
     public FramedPaneBlock(Properties p_i48355_2_) {
         super(p_i48355_2_);
         this.registerDefaultState(this.stateDefinition.any().setValue(NORTH, Boolean.valueOf(false)).setValue(EAST, Boolean.valueOf(false)).setValue(SOUTH, Boolean.valueOf(false)).setValue(WEST, Boolean.valueOf(false)).setValue(UP, Boolean.valueOf(false)).setValue(DOWN, Boolean.valueOf(false)).setValue(VARIANT, Boolean.valueOf(false)).setValue(FACING, Direction.NORTH));
@@ -148,5 +155,10 @@ public class FramedPaneBlock extends HorizonalRotateBlock{
                 .setValue(DOWN, Boolean.valueOf(this.connectsTo(thisState, bState)))
                 .setValue(VARIANT, Boolean.valueOf(p_196258_1_.getPlayer().isSuppressingBounce()))
                 ;
+    }
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable IBlockReader reader, List<ITextComponent> list, ITooltipFlag flag) {
+        list.add((new TranslationTextComponent("info.urushi.framed_block1" )).withStyle(TextFormatting.GRAY));
+        list.add((new TranslationTextComponent("info.urushi.framed_block2" )).withStyle(TextFormatting.GRAY));
     }
 }

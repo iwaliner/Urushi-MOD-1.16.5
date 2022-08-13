@@ -4,16 +4,24 @@ import com.iwaliner.urushi.BlocksRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
 
 public class ChiseledLacquerLogBlock extends HorizontalBlock {
@@ -71,6 +79,10 @@ public class ChiseledLacquerLogBlock extends HorizontalBlock {
 
        }
         }
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable IBlockReader reader, List<ITextComponent> list, ITooltipFlag flag) {
+        list.add((new TranslationTextComponent("info.urushi.chiseled_lacquer_log" )).withStyle(TextFormatting.GRAY));
+    }
 
     }
 
