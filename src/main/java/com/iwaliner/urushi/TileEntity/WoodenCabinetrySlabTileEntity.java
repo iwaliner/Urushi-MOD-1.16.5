@@ -102,7 +102,7 @@ public class WoodenCabinetrySlabTileEntity extends LockableLootTileEntity {
             this.scheduleRecheck();
         } else {
             BlockState blockstate = this.getBlockState();
-            if (!blockstate.is(BlocksRegister.WoodenCabinetrySlab.get())) {
+            if (!(blockstate.getBlock() instanceof WoodenCabinetrySlabBlock)) {
                 this.setRemoved();
                 return;
             }

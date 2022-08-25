@@ -342,5 +342,18 @@
    "block.urushi.deep_blue_noren": "蓝色门帘",
    "block.urushi.men_onsen_noren": "温泉门帘(男人)",
    "block.urushi.women_onsen_noren": "温泉门帘(女人)",
-   "block.urushi.sushi_noren": "寿司商号布帘"
+   "block.urushi.sushi_noren": "寿司商号布帘",
+   "block.urushi.doubled_wooden_cabinetry": "加倍的木柜",
+   "block.urushi.red_urushi_wooden_cabinetry_slab": "朱漆木柜台阶",
+   "block.urushi.red_urushi_wooden_cabinetry": "朱漆木柜",
+   "block.urushi.doubled_red_urushi_wooden_cabinetry": "加倍的朱漆木柜",
+   "block.urushi.hiwadabuki_block": "扁柏树皮块",
+   "block.urushi.hiwadabuki_slab": "扁柏树皮台阶",
+   "block.urushi.hiwadabuki_stairs": "扁柏树皮楼梯",
+   "block.urushi.hiwadabuki_roof_45": "Hiwadabuki Roof for Stairs",
+   "block.urushi.hiwadabuki_roof_225": "Hiwadabuki Roof for Slabs",
+   "block.urushi.ibushi_kawara_wall": "熏瓦墙",
+   "block.urushi.copper_kawara_wall": "铜瓦墙",
+   "block.urushi.cupric_oxide_kawara_wall": "氧化铜瓦墙",
+   "container.doubledwoodencabinetry":"加倍的木柜"
 }

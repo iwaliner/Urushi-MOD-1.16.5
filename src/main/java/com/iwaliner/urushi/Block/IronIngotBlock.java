@@ -47,31 +47,7 @@ public class IronIngotBlock extends HorizonalRotateBlock{
             return SHAPEA;
         }
     }
-/*
-    @Override
-    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
-       if(postBlock!=null&&postBlock instanceof IronIngotBlock){
-           Random random=new Random();
-           int i=random.nextInt(16);
-           BlockState thisBlock=world.getBlockState(pos);
-           double d0 = (double) pos.getX() +random.nextInt(16)*0.1D;
-           double d1 = (double) pos.getY() +random.nextInt(5)*0.1D;
-           double d2 = (double) pos.getZ() +random.nextInt(16)*0.1D;
-           if(thisBlock.getBlock() instanceof IronIngotBlock){
-               if (i == 0) {
-                   world.setBlockAndUpdate(pos, postBlock.defaultBlockState().setValue(FACING, thisBlock.getValue(FACING)));
-                   world.addParticle(ParticleTypes.FLAME,  d0,d1, d2, 0.0D, 0D, 0.0D);
-                   world.playSound((PlayerEntity) null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ANVIL_LAND, SoundCategory.NEUTRAL, 0.1F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-                   return ActionResultType.FAIL;
-               }else{
-                   world.addParticle(ParticleTypes.FLAME,  d0,d1, d2, 0.0D, 0D, 0.0D);
-                   world.playSound((PlayerEntity) null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ANVIL_PLACE, SoundCategory.NEUTRAL, 0.1F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-                   return ActionResultType.FAIL;
-               }
-           }
-       }
-       return ActionResultType.FAIL;
-    }*/
+
 public PushReaction getPistonPushReaction(BlockState p_149656_1_) {
     return PushReaction.DESTROY;
 }

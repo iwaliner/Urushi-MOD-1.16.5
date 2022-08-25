@@ -45,8 +45,7 @@ public class WoodenCabinetryBlock extends ContainerBlock {
             if (tileentity instanceof WoodenCabinetryTileEntity) {
                 p_225533_4_.openMenu((WoodenCabinetryTileEntity)tileentity);
                 p_225533_4_.awardStat(Stats.CUSTOM.get(Stats.OPEN_CHEST));
-                PiglinTasks.angerNearbyPiglins(p_225533_4_, true);
-            }
+             }
 
             return ActionResultType.CONSUME;
         }

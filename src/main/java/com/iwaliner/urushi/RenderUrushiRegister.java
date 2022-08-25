@@ -65,7 +65,8 @@ public class RenderUrushiRegister {
         RenderTypeLookup.setRenderLayer(BlocksRegister.CyanNoren.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlocksRegister.MagentaNoren.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlocksRegister.SushiNoren.get(), RenderType.cutout());
-
+        RenderTypeLookup.setRenderLayer(BlocksRegister.dirt_furnace.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.reiryoku_tank_tier1.get(), RenderType.cutout());
     }
 
 }

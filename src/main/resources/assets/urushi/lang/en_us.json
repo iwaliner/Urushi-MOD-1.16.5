@@ -342,5 +342,18 @@
    "block.urushi.deep_blue_noren": "Blue Noren",
    "block.urushi.men_onsen_noren": "Onsen Noren for Men",
    "block.urushi.women_onsen_noren": "Onsen Noren for Women",
-   "block.urushi.sushi_noren": "Sushi Noren"
+   "block.urushi.sushi_noren": "Sushi Noren",
+   "block.urushi.doubled_wooden_cabinetry": "Doubled Wooden Cabinetry",
+   "block.urushi.red_urushi_wooden_cabinetry_slab": "Red Urushi Wooden Cabinetry Slab",
+   "block.urushi.red_urushi_wooden_cabinetry": "Red Urushi Wooden Cabinetry",
+   "block.urushi.doubled_red_urushi_wooden_cabinetry": "Red Urushi Doubled Wooden Cabinetry",
+   "block.urushi.hiwadabuki_block": "Hiwadabuki Block",
+   "block.urushi.hiwadabuki_slab": "Hiwadabuki Slab",
+   "block.urushi.hiwadabuki_stairs": "Hiwadabuki Stairs",
+   "block.urushi.hiwadabuki_roof_45": "Hiwadabuki Roof for Stairs",
+   "block.urushi.hiwadabuki_roof_225": "Hiwadabuki Roof for Slabs",
+   "block.urushi.ibushi_kawara_wall": "Ibushi Kawara Wall",
+   "block.urushi.copper_kawara_wall": "Copper Kawara Wall",
+   "block.urushi.cupric_oxide_kawara_wall": "Cupric Oxide Kawara Wall",
+   "container.doubledwoodencabinetry":"Doubled Wooden Cabinetry"
 }

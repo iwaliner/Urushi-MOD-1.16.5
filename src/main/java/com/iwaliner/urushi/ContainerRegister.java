@@ -3,6 +3,7 @@ package com.iwaliner.urushi;
 import com.iwaliner.urushi.Container.DoubledWoodenCabinetryContainer;
 import com.iwaliner.urushi.Container.FryerContainer;
 
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,7 +20,7 @@ public class ContainerRegister  {
         return new FryerContainer(windowId, inv);
     }));
     public static final RegistryObject<ContainerType<DoubledWoodenCabinetryContainer>> DoubledWoodenCabinetryContainer = Containers.register("doubled_wooden_cabinetry", () -> IForgeContainerType.create((windowId, inv, data) -> {
-        return new DoubledWoodenCabinetryContainer(windowId,inv);
+        return com.iwaliner.urushi.Container.DoubledWoodenCabinetryContainer.twRows(windowId,inv,new Inventory(13 * 8+4));
     }));
 
 

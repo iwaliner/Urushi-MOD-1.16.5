@@ -16,13 +16,13 @@ public class RecipeTypeRegister {
     public static final RegistryObject<FryingRecipe.FryingSerializer> FRYING_SERIALIZER
             = RECIPE_SERIALIZER.register("frying", FryingRecipe.FryingSerializer::new);
 
-    public static IRecipeType<FryingRecipe> FRYING_RECIPE
-            = new FryingRecipe.FryingRecipeType();
+    public static IRecipeType<FryingRecipe> FRYING_RECIPE = new FryingRecipe.FryingRecipeType();
 
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZER.register(eventBus);
 
         Registry.register(Registry.RECIPE_TYPE, FryingRecipe.locationType, FRYING_RECIPE);
+
     }
 }

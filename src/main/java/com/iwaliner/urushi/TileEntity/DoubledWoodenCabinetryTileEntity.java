@@ -2,37 +2,39 @@ package com.iwaliner.urushi.TileEntity;
 
 
 import com.iwaliner.urushi.Block.DoubledWoodenCabinetryBlock;
-import com.iwaliner.urushi.Block.WoodenCabinetryBlock;
-import com.iwaliner.urushi.BlocksRegister;
 import com.iwaliner.urushi.Container.DoubledWoodenCabinetryContainer;
 import com.iwaliner.urushi.TileEntitiesRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.DoubleSidedInventory;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ChestTileEntity;
 import net.minecraft.tileentity.LockableLootTileEntity;
+import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 
 public class DoubledWoodenCabinetryTileEntity extends LockableLootTileEntity {
-    private NonNullList<ItemStack> items = NonNullList.withSize(128, ItemStack.EMPTY);
+    private NonNullList<ItemStack> items = NonNullList.withSize(108, ItemStack.EMPTY);
     private int openCount;
     public DoubledWoodenCabinetryTileEntity(TileEntityType<?> p_i48289_1_) {
         super(p_i48289_1_);
     }
     public DoubledWoodenCabinetryTileEntity(){
-        this(TileEntitiesRegister.WoodenCabinetryTile.get());}
+        this(TileEntitiesRegister.DoubledWoodenCabinetryTile.get());}
+
 
     public CompoundNBT save(CompoundNBT p_189515_1_) {
         super.save(p_189515_1_);
@@ -53,7 +55,7 @@ public class DoubledWoodenCabinetryTileEntity extends LockableLootTileEntity {
     }
 
     public int getContainerSize() {
-        return 128;
+        return 108;
     }
 
     protected NonNullList<ItemStack> getItems() {
@@ -69,7 +71,7 @@ public class DoubledWoodenCabinetryTileEntity extends LockableLootTileEntity {
     }
 
     protected Container createMenu(int p_213906_1_, PlayerInventory p_213906_2_) {
-        return new DoubledWoodenCabinetryContainer(p_213906_1_, p_213906_2_);
+        return DoubledWoodenCabinetryContainer.twRows(p_213906_1_,p_213906_2_, this);
     }
 
     public void startOpen(PlayerEntity p_174889_1_) {
@@ -99,12 +101,12 @@ public class DoubledWoodenCabinetryTileEntity extends LockableLootTileEntity {
         int i = this.worldPosition.getX();
         int j = this.worldPosition.getY();
         int k = this.worldPosition.getZ();
-        this.openCount = ChestTileEntity.getOpenCount(this.level, this, i, j, k);
+        this.openCount = this.getOpenCount(this.level, this, i, j, k);
         if (this.openCount > 0) {
             this.scheduleRecheck();
         } else {
             BlockState blockstate = this.getBlockState();
-            if (!blockstate.is(BlocksRegister.DoubledWoodenCabinetry.get())) {
+            if (!(blockstate.getBlock() instanceof DoubledWoodenCabinetryBlock)) {
                 this.setRemoved();
                 return;
             }
@@ -135,5 +137,20 @@ public class DoubledWoodenCabinetryTileEntity extends LockableLootTileEntity {
         double d1 = (double)this.worldPosition.getY() + 0.5D + (double)vector3i.getY() / 2.0D;
         double d2 = (double)this.worldPosition.getZ() + 0.5D + (double)vector3i.getZ() / 2.0D;
         this.level.playSound((PlayerEntity)null, d0, d1, d2, p_213965_2_, SoundCategory.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
+    }
+    public static int getOpenCount(World p_213976_0_, LockableTileEntity p_213976_1_, int p_213976_2_, int p_213976_3_, int p_213976_4_) {
+        int i = 0;
+        float f = 5.0F;
+
+        for(PlayerEntity playerentity : p_213976_0_.getEntitiesOfClass(PlayerEntity.class, new AxisAlignedBB((double)((float)p_213976_2_ - 5.0F), (double)((float)p_213976_3_ - 5.0F), (double)((float)p_213976_4_ - 5.0F), (double)((float)(p_213976_2_ + 1) + 5.0F), (double)((float)(p_213976_3_ + 1) + 5.0F), (double)((float)(p_213976_4_ + 1) + 5.0F)))) {
+            if (playerentity.containerMenu instanceof DoubledWoodenCabinetryContainer) {
+                IInventory iinventory = ((DoubledWoodenCabinetryContainer)playerentity.containerMenu).getContainer();
+                if (iinventory == p_213976_1_ || iinventory instanceof DoubleSidedInventory && ((DoubleSidedInventory)iinventory).contains(p_213976_1_)) {
+                    ++i;
+                }
+            }
+        }
+
+        return i;
     }
 }

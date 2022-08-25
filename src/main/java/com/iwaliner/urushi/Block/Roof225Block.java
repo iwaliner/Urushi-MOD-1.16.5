@@ -51,39 +51,39 @@ public class Roof225Block extends HorizonalRotateSlabBlock {
         Direction direction = context.getHorizontalDirection();
         Direction.Axis direction$axis = direction.getAxis();
         boolean flag1 = direction$axis == Direction.Axis.Z && (world.getBlockState(blockpos.west()).getBlock() instanceof Roof225Block || world.getBlockState(blockpos.east()).getBlock() instanceof Roof225Block) || direction$axis == Direction.Axis.X && (world.getBlockState(blockpos.north()).getBlock() instanceof Roof225Block || world.getBlockState(blockpos.south()).getBlock() instanceof Roof225Block);
-        BlockState blockstateClicked=null;
+        BlockState blockstateClicked = null;
 
-    } if(direction$axis == Direction.Axis.Z){
-        if(world.getBlockState(blockpos.west()).getBlock() instanceof Roof225Block ){
-            blockstateClicked=world.getBlockState(blockpos.west());
-        }else if(world.getBlockState(blockpos.east()).getBlock() instanceof Roof225Block ){
-            blockstateClicked=world.getBlockState(blockpos.east());
+        if (direction$axis == Direction.Axis.Z) {
+            if (world.getBlockState(blockpos.west()).getBlock() instanceof Roof225Block) {
+                blockstateClicked = world.getBlockState(blockpos.west());
+            } else if (world.getBlockState(blockpos.east()).getBlock() instanceof Roof225Block) {
+                blockstateClicked = world.getBlockState(blockpos.east());
+            }
+        } else if (direction$axis == Direction.Axis.X) {
+            if (world.getBlockState(blockpos.north()).getBlock() instanceof Roof225Block) {
+                blockstateClicked = world.getBlockState(blockpos.north());
+            } else if (world.getBlockState(blockpos.south()).getBlock() instanceof Roof225Block) {
+                blockstateClicked = world.getBlockState(blockpos.south());
+            }
         }
-    }else if(direction$axis == Direction.Axis.X){
-        if(world.getBlockState(blockpos.north()).getBlock() instanceof Roof225Block ){
-            blockstateClicked=world.getBlockState(blockpos.north());
-        }else if(world.getBlockState(blockpos.south()).getBlock() instanceof Roof225Block ){
-            blockstateClicked=world.getBlockState(blockpos.south());
+
+        if (flag1 && blockstateClicked != null) {
+            return this.defaultBlockState().setValue(FACING, blockstateClicked.getValue(FACING)).setValue(TYPE, blockstateClicked.getValue(TYPE)).setValue(WATERLOGGED, Boolean.valueOf(false));
+
+        } else if (world.getBlockState(blockpos.below()).getBlock() instanceof SlabBlock && world.getBlockState(blockpos.below()).getValue(TYPE) != SlabType.DOUBLE) {
+            if (world.getBlockState(blockpos.below()).getValue(TYPE) == SlabType.TOP) {
+                return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, Boolean.valueOf(false));
+            } else if (world.getBlockState(blockpos.below()).getValue(TYPE) == SlabType.BOTTOM) {
+                return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(TYPE, SlabType.TOP).setValue(WATERLOGGED, Boolean.valueOf(false));
+            } else {
+                return this.defaultBlockState();
+            }
+        } else {
+            BlockState blockstate1 = this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, Boolean.valueOf(false));
+            Direction direction2 = context.getClickedFace();
+            return direction2 != Direction.DOWN && (direction2 == Direction.UP || !(context.getClickLocation().y - (double) blockpos.getY() > 0.5D)) ? blockstate1 : blockstate1.setValue(TYPE, SlabType.TOP);
+
         }
-    }
-
-        if(flag1&&blockstateClicked!=null){
-        return this.defaultBlockState().setValue(FACING, blockstateClicked.getValue(FACING)).setValue(TYPE, blockstateClicked.getValue(TYPE)).setValue(WATERLOGGED, Boolean.valueOf(false));
-
-    }else if(world.getBlockState(blockpos.below()).getBlock() instanceof SlabBlock&&world.getBlockState(blockpos.below()).getValue(TYPE)!=SlabType.DOUBLE){
-        if(world.getBlockState(blockpos.below()).getValue(TYPE)==SlabType.TOP){
-            return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, Boolean.valueOf(false));
-        }else if(world.getBlockState(blockpos.below()).getValue(TYPE)==SlabType.BOTTOM){
-            return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(TYPE, SlabType.TOP).setValue(WATERLOGGED, Boolean.valueOf(false));
-        }else{
-            return this.defaultBlockState();
-        }
-    }
-        else{
-        BlockState blockstate1 = this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, Boolean.valueOf(false));
-        Direction direction2 = context.getClickedFace();
-        return direction2 != Direction.DOWN && (direction2 == Direction.UP || !(context.getClickLocation().y - (double)blockpos.getY() > 0.5D)) ? blockstate1 : blockstate1.setValue(TYPE, SlabType.TOP);
-
     }
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable IBlockReader reader, List<ITextComponent> list, ITooltipFlag flag) {

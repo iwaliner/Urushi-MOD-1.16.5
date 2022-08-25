@@ -60,7 +60,6 @@ public class WoodenCabinetrySlabBlock extends ContainerBlock implements IWaterLo
             if (tileentity instanceof WoodenCabinetrySlabTileEntity) {
                 p_225533_4_.openMenu((WoodenCabinetrySlabTileEntity)tileentity);
                 p_225533_4_.awardStat(Stats.OPEN_CHEST);
-                PiglinTasks.angerNearbyPiglins(p_225533_4_, true);
             }
 
             return ActionResultType.CONSUME;

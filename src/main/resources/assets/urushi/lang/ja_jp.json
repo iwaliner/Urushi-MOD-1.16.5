@@ -342,5 +342,18 @@
    "block.urushi.deep_blue_noren": "青色の暖簾",
    "block.urushi.men_onsen_noren": "男湯の暖簾",
    "block.urushi.women_onsen_noren": "女湯の暖簾",
-   "block.urushi.sushi_noren": "寿司屋の暖簾"
+   "block.urushi.sushi_noren": "寿司屋の暖簾",
+   "block.urushi.doubled_wooden_cabinetry": "大容量の箪笥",
+   "block.urushi.red_urushi_wooden_cabinetry_slab": "朱漆の箪笥のハーフブロック",
+   "block.urushi.red_urushi_wooden_cabinetry": "朱漆の箪笥",
+   "block.urushi.doubled_red_urushi_wooden_cabinetry": "大容量の朱漆の箪笥",
+   "block.urushi.hiwadabuki_block": "檜皮ブロック",
+   "block.urushi.hiwadabuki_slab": "檜皮のハーフブロック",
+   "block.urushi.hiwadabuki_stairs": "檜皮の階段",
+   "block.urushi.hiwadabuki_roof_45": "檜皮の屋根(45°)",
+   "block.urushi.hiwadabuki_roof_225": "檜皮の屋根(225°)",
+   "block.urushi.ibushi_kawara_wall": "いぶし瓦の塀",
+   "block.urushi.copper_kawara_wall": "銅瓦の塀",
+   "block.urushi.cupric_oxide_kawara_wall": "緑青瓦の塀",
+   "container.doubledwoodencabinetry":"大容量の箪笥"
 }

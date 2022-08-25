@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Block;
 
+import com.iwaliner.urushi.ModCore_Urushi;
 import com.iwaliner.urushi.TileEntity.DoubledWoodenCabinetryTileEntity;
-import com.iwaliner.urushi.TileEntity.WoodenCabinetryTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -48,9 +48,8 @@ public class DoubledWoodenCabinetryBlock extends ContainerBlock {
             TileEntity tileentity = p_225533_2_.getBlockEntity(p_225533_3_);
             if (tileentity instanceof DoubledWoodenCabinetryTileEntity) {
                 p_225533_4_.openMenu((DoubledWoodenCabinetryTileEntity)tileentity);
-                p_225533_4_.awardStat(Stats.CUSTOM.get(Stats.OPEN_CHEST));
-                PiglinTasks.angerNearbyPiglins(p_225533_4_, true);
-            }
+                p_225533_4_.awardStat(ModCore_Urushi.INTERACT_WITH_DOUBLED_WOODEN_CABINETRY);
+                   }
 
             return ActionResultType.CONSUME;
         }

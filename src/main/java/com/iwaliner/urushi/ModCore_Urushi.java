@@ -3,20 +3,37 @@ import com.iwaliner.urushi.Block.IronIngotBlock;
 import com.iwaliner.urushi.RecipeType.RecipeTypeRegister;
 import com.iwaliner.urushi.World.OreGen;
 import com.iwaliner.urushi.World.TreeGenerator;
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
 import jeresources.proxy.CommonProxy;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ActiveRenderInfo;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.stats.IStatFormatter;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.text.Color;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
@@ -24,10 +41,13 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.client.event.DrawHighlightEvent;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -38,9 +58,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -50,6 +72,7 @@ import java.util.function.Supplier;
 public class ModCore_Urushi {
     public static final String MOD_ID = "urushi";
     public static final ResourceLocation INTERACT_WITH_FRYER = makeCustomStat("interact_with_fryer", IStatFormatter.DEFAULT);
+    public static final ResourceLocation INTERACT_WITH_DOUBLED_WOODEN_CABINETRY = makeCustomStat("interact_with_doubled_wooden_cabinetry", IStatFormatter.DEFAULT);
     private static ResourceLocation makeCustomStat(String p_199084_0_, IStatFormatter p_199084_1_) {
         ResourceLocation resourcelocation = new ResourceLocation(p_199084_0_);
         Registry.register(Registry.CUSTOM_STAT, p_199084_0_, resourcelocation);
@@ -95,6 +118,8 @@ public class ModCore_Urushi {
 
         /**コンフィグを登録*/
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON,ConfigUrushi.spec,"urushi.toml");
+
+
 
     }
 
@@ -178,6 +203,7 @@ public class ModCore_Urushi {
             }
         }
     }
+    /**プレイヤーの移動速度を上昇*/
     @SubscribeEvent
     public void PlayerSpeedEvent(EntityEvent.EnteringChunk event) {
         if(ConfigUrushi.TurnOnSpeedUp.get()) {
@@ -188,6 +214,7 @@ public class ModCore_Urushi {
             }
         }
     }
+    /**草を壊して種が出るように*/
     @SubscribeEvent
     public void GrassDropEvent(BlockEvent.BreakEvent event) {
         if (!event.getPlayer().isCreative() && (event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.FERN || event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.TALL_GRASS || event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.GRASS) ) {
@@ -202,10 +229,33 @@ public class ModCore_Urushi {
                         event.getWorld().addFreshEntity(entity);
                     }
                 }
-
-
     }
-/*
+    /**草の道の作成を改善*/
+    @SubscribeEvent
+    public void GrassPathEvent(BlockEvent.BlockToolInteractEvent event) {
+       if(event.getToolType()== ToolType.SHOVEL){
+           if(event.getState().getBlock()==Blocks.GRASS_BLOCK||event.getState().getBlock()==Blocks.DIRT||event.getState().getBlock()==Blocks.PODZOL){
+                   event.getWorld().destroyBlock(event.getPos().above(),true);
+                   event.getWorld().setBlock(event.getPos(),Blocks.GRASS_PATH.defaultBlockState(),2);
+                   event.getPlayer().swing(Hand.MAIN_HAND);
+               event.getHeldItemStack().hurtAndBreak(1, event.getPlayer(), (p_220041_1_) -> {
+                   p_220041_1_.broadcastBreakEvent(Hand.MAIN_HAND);
+               });
+                   event.getWorld().playSound(event.getPlayer(), event.getPos(), SoundEvents.SHOVEL_FLATTEN, SoundCategory.PLAYERS, 1.0F, 1F);
+           }
+       }
+    }
+    /**葉の上に落下したとき落下ダメージを受けないように*/
+    @SubscribeEvent
+    public void LeavesDamageEvent(LivingHurtEvent event) {
+        if(event.getSource()==DamageSource.FALL){
+            if(event.getEntityLiving().level.getBlockState(event.getEntityLiving().blockPosition().below()).getBlock() instanceof LeavesBlock){
+                event.setCanceled(true);
+            }
+        }
+    }
+
+/*.
     @SubscribeEvent
     public void LootTableEvent(LootTableLoadEvent event) {
         if (event.getName().equals(GrassDrops))

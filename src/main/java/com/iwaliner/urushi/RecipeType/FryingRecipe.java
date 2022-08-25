@@ -81,7 +81,7 @@ public class FryingRecipe implements IFryingRecipe {
 
         @Override
         public FryingRecipe fromJson(ResourceLocation location, JsonObject json) {
-            ItemStack output=ShapedRecipe.itemFromJson(JSONUtils.getAsJsonObject(json,"output"));
+            ItemStack output=ShapedRecipe.itemFromJson(JSONUtils.getAsJsonObject(json,"result"));
             JsonArray ingredient=JSONUtils.getAsJsonArray(json,"ingredients");
             NonNullList<Ingredient> input=NonNullList.withSize(1,Ingredient.EMPTY);
              for(int i=0;i<input.size();i++){

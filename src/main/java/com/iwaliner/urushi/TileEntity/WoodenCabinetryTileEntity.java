@@ -2,6 +2,7 @@ package com.iwaliner.urushi.TileEntity;
 
 
 import com.iwaliner.urushi.Block.WoodenCabinetryBlock;
+import com.iwaliner.urushi.Block.WoodenCabinetrySlabBlock;
 import com.iwaliner.urushi.BlocksRegister;
 import com.iwaliner.urushi.TileEntitiesRegister;
 import net.minecraft.block.BlockState;
@@ -102,7 +103,7 @@ public class WoodenCabinetryTileEntity extends LockableLootTileEntity {
             this.scheduleRecheck();
         } else {
             BlockState blockstate = this.getBlockState();
-            if (!blockstate.is(BlocksRegister.WoodenCabinetry.get())) {
+            if (!(blockstate.getBlock() instanceof WoodenCabinetryBlock)) {
                 this.setRemoved();
                 return;
             }

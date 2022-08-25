@@ -4,12 +4,16 @@ import com.iwaliner.urushi.Entity.*;
 import com.iwaliner.urushi.Renderer.*;
 import com.iwaliner.urushi.Screen.DoubledWoodenCabinetryScreen;
 import com.iwaliner.urushi.Screen.FryerScreen;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.OreBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemModelsProperties;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -27,6 +31,29 @@ public class ClientSetup {
 
     @SubscribeEvent
     public static void RegisterRendererEvent(FMLClientSetupEvent event) {
+
+        /**霊力で変化させるレシピを登録*/
+        UrushiUtils.setItemBewitchRecipe(Items.SUGAR,Items.GLOWSTONE_DUST);
+        //UrushiUtils.setItemBewitchRecipe(Items.PAPER,ItemsRegister.blank_charm.get());
+        UrushiUtils.setItemBewitchRecipe(ItemsRegister.NormalKatanaTier10.get(),Items.DIAMOND);
+        UrushiUtils.setItemBewitchRecipe(Item.byBlock(Blocks.GOLD_BLOCK),Item.byBlock(Blocks.DIAMOND_BLOCK));
+
+        UrushiUtils.setBewitchingTime(Items.SUGAR,60);
+        UrushiUtils.setBewitchingTime(Items.PAPER,100);
+        UrushiUtils.setBewitchingTime(ItemsRegister.NormalKatanaTier10.get(),10);
+        UrushiUtils.setBewitchingTime(Item.byBlock(Blocks.GOLD_BLOCK),200);
+
+        UrushiUtils.setAltarVariant(Items.SUGAR,1);
+        UrushiUtils.setAltarVariant(Items.GLOWSTONE_DUST,2);
+        UrushiUtils.setAltarVariant(Items.PAPER,3);
+       // UrushiUtils.setAltarVariant(ItemsRegister.blank_charm.get(),4);
+        UrushiUtils.setAltarVariant(ItemsRegister.NormalKatanaTier10.get(),5);
+        UrushiUtils.setAltarVariant(Items.DIAMOND,6);
+        UrushiUtils.setAltarVariant(Items.GOLD_BLOCK,7);
+        UrushiUtils.setAltarVariant(Items.DIAMOND_BLOCK,8);
+
+
+
 /**コンテナにGUIを登録*/
         ScreenManager.register(ContainerRegister.FryerContainer.get(), FryerScreen::new);
         ScreenManager.register(ContainerRegister.DoubledWoodenCabinetryContainer.get(), DoubledWoodenCabinetryScreen::new);
@@ -61,6 +88,8 @@ public class ClientSetup {
                 renderManager -> new GhostRenderer(renderManager));
         RenderingRegistry.registerEntityRenderingHandler(EntityRegister.RedOniEntity.get(),
                 renderManager -> new RedOniRenderer(renderManager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegister.YokoEntity.get(),
+                renderManager -> new YokoRenderer(renderManager));
     }
 
     /**モブの挙動・性質を設定*/
@@ -106,6 +135,14 @@ public class ClientSetup {
                         .add(Attributes.ATTACK_SPEED, 0.5D)
                         .add(Attributes.FLYING_SPEED, 0.5D)
                         .add(Attributes.MOVEMENT_SPEED, 0.3D)
+                        .build());
+        entityRegisterEvent.put(EntityRegister.YokoEntity.get(),
+                RedOniEntity.createAttributes()
+                        .add(Attributes.MAX_HEALTH, 30.0D)
+                       // .add(Attributes.ATTACK_DAMAGE, 5.0D)
+                       // .add(Attributes.ATTACK_SPEED, 0.5D)
+                        .add(Attributes.FLYING_SPEED, 0.2D)
+                        .add(Attributes.MOVEMENT_SPEED, 0.2D)
                         .build());
     }
 
