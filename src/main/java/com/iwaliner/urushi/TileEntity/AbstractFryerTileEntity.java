@@ -3,6 +3,7 @@ package com.iwaliner.urushi.TileEntity;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ModCore_Urushi;
 import com.iwaliner.urushi.RecipeType.FryingRecipe;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -30,6 +31,8 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 import java.util.List;

@@ -6,7 +6,7 @@
       "item": "minecraft:cooked_porkchop"
     },
     {
-      "tag": "forge:crops/rice"
+      "item": "urushi:rice"
     }
   ],
   "result": {

@@ -355,5 +355,20 @@
    "block.urushi.ibushi_kawara_wall": "Ibushi Kawara Wall",
    "block.urushi.copper_kawara_wall": "Copper Kawara Wall",
    "block.urushi.cupric_oxide_kawara_wall": "Cupric Oxide Kawara Wall",
-   "container.doubledwoodencabinetry":"Doubled Wooden Cabinetry"
+   "container.doubledwoodencabinetry":"Doubled Wooden Cabinetry",
+   "block.urushi.kasuga_lantern": "Kasuga Lantern",
+   "block.urushi.dough": "Noodle Dough",
+   "block.urushi.udon": "Udon",
+   "block.urushi.salt_and_sand": "Salt And Sand",
+   "item.urushi.yokan": "Yokan",
+   "item.urushi.sakura_yokan": "Sakura Yokan",
+   "item.urushi.sekihan": "Sekihan",
+   "item.urushi.kanten_powder": "Kanten Powder",
+   "item.urushi.salt": "Salt",
+   "item.urushi.kitsune_udon": "Kitsune Udon",
+   "item.urushi.noodle_knife": "Noodle Knife",
+   "info.urushi.salt": "click Salt And Sand to obtain",
+   "info.urushi.noodleknife": "cut noodles with this",
+   "info.urushi.saltandsand": "In ocean or beach, Sand on the water will be this.",
+   "info.urushi.udon": "To obtain, use Noodle Knife to Noodle Dough."
 }

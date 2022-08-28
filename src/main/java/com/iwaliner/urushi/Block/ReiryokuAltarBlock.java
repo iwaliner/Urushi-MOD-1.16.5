@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
 
 public class ReiryokuAltarBlock extends AbstractHasReiryokuBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final IntegerProperty VARIANT = IntegerProperty.create("variant",0,20);
+    public static final IntegerProperty VARIANT = IntegerProperty.create("variant",0,15);
     private static final VoxelShape box = Block.box(1D, 0D, 1D, 15D, 16D, 15D);
 
     public ReiryokuAltarBlock(Properties p_i49996_1_) {

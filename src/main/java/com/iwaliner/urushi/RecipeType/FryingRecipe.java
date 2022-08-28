@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ModCore_Urushi;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -16,6 +17,8 @@ import net.minecraft.util.JSONUtils;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
@@ -33,11 +36,9 @@ public class FryingRecipe implements IFryingRecipe {
 
     @Override
     public boolean matches(IInventory inventory, World world) {
-      /* if(ingredient.get(0).test(inventory.getItem(0))){
-           return ingredient.get(2).test(inventory.getItem(2));
-       } return false;
-       */
+
         return ingredient.get(0).test(inventory.getItem(0));
+
     }
 
     @Override
@@ -85,7 +86,7 @@ public class FryingRecipe implements IFryingRecipe {
             JsonArray ingredient=JSONUtils.getAsJsonArray(json,"ingredients");
             NonNullList<Ingredient> input=NonNullList.withSize(1,Ingredient.EMPTY);
              for(int i=0;i<input.size();i++){
-                 input.set(i,Ingredient.fromJson(ingredient.get(i)));
+                 input.set(i,Ingredient.fromJson(ingredient.get(0)));
              }
              return new FryingRecipe(input,output,location);
         }
@@ -94,16 +95,13 @@ public class FryingRecipe implements IFryingRecipe {
         @Override
         public FryingRecipe fromNetwork(ResourceLocation location, PacketBuffer buffer) {
           NonNullList<Ingredient> input=NonNullList.withSize(1,Ingredient.EMPTY);
-            for(int i=0;i<input.size();i++){
-                input.set(i,Ingredient.fromNetwork(buffer));
-            }
+               input.set(0,Ingredient.fromNetwork(buffer));
             ItemStack output=buffer.readItem();
             return new FryingRecipe(input,output,location);
         }
 
         @Override
         public void toNetwork(PacketBuffer buffer, FryingRecipe recipe) {
-            buffer.writeInt(recipe.getIngredient().size());
             for (Ingredient ingredient :recipe.getIngredient()){
                 ingredient.toNetwork(buffer);
             }

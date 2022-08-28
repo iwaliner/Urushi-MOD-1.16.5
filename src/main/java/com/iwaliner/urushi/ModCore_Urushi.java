@@ -1,39 +1,25 @@
 package com.iwaliner.urushi;
 import com.iwaliner.urushi.Block.IronIngotBlock;
+import com.iwaliner.urushi.Proxy.ClientProxy;
+import com.iwaliner.urushi.Proxy.CommonProxy;
 import com.iwaliner.urushi.RecipeType.RecipeTypeRegister;
 import com.iwaliner.urushi.World.OreGen;
 import com.iwaliner.urushi.World.TreeGenerator;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
-import jeresources.proxy.CommonProxy;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ActiveRenderInfo;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.stats.IStatFormatter;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.text.Color;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
@@ -41,13 +27,13 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
-import net.minecraftforge.client.event.DrawHighlightEvent;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -58,11 +44,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-
-import java.lang.reflect.Field;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.io.File;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -82,8 +68,13 @@ public class ModCore_Urushi {
 
     /**クリエイティブタブを登録*/
     public static final ItemGroup TabUrushi=new TabUrushi("urushi");
+    public static File assetsDirectory;
+    public static File assetsInBuildDirectory;
+    public static File dataDirectory;
+    public static File dataInBuildDirectory;
+    public static Logger logger = LogManager.getLogger("urushi");
 
-    private static ResourceLocation GrassDrops = new ResourceLocation("minecraft", "blocks/grass");
+    public static CommonProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> com.iwaliner.urushi.Proxy.CommonProxy::new);
 
     public ModCore_Urushi() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -103,6 +94,7 @@ public class ModCore_Urushi {
         /**レシピタイプを登録*/
         RecipeTypeRegister.register(modEventBus);
 
+
         /**GUI付きブロック内のコンテナを登録*/
         ContainerRegister.register(modEventBus);
 
@@ -118,6 +110,8 @@ public class ModCore_Urushi {
 
         /**コンフィグを登録*/
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON,ConfigUrushi.spec,"urushi.toml");
+
+
 
 
 
@@ -218,18 +212,19 @@ public class ModCore_Urushi {
     @SubscribeEvent
     public void GrassDropEvent(BlockEvent.BreakEvent event) {
         if (!event.getPlayer().isCreative() && (event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.FERN || event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.TALL_GRASS || event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.GRASS) ) {
-              if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
-                        ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(BlocksRegister.RiceCrop.get()));
-                        event.getWorld().addFreshEntity(entity);
-                    } else if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
-                        ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(BlocksRegister.SoyCrop.get()));
-                        event.getWorld().addFreshEntity(entity);
-                    } else if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
-                        ItemEntity entity = new ItemEntity((World) event.getWorld(),(double) event.getPos().getX(),(double)event.getPos().getY(), (double)event.getPos().getZ(), new ItemStack(BlocksRegister.AzukiCrop.get()));
-                        event.getWorld().addFreshEntity(entity);
-                    }
-                }
+            if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
+                ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(BlocksRegister.RiceCrop.get()));
+                event.getWorld().addFreshEntity(entity);
+            } else if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
+                ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(BlocksRegister.SoyCrop.get()));
+                event.getWorld().addFreshEntity(entity);
+            } else if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
+                ItemEntity entity = new ItemEntity((World) event.getWorld(), (double) event.getPos().getX(), (double) event.getPos().getY(), (double) event.getPos().getZ(), new ItemStack(BlocksRegister.AzukiCrop.get()));
+                event.getWorld().addFreshEntity(entity);
+            }
+        }
     }
+
     /**草の道の作成を改善*/
     @SubscribeEvent
     public void GrassPathEvent(BlockEvent.BlockToolInteractEvent event) {
@@ -254,15 +249,32 @@ public class ModCore_Urushi {
             }
         }
     }
-
-/*.
+    /**砂が海岸や海系のバイオーム内で水に接すると塩を含んだ砂になる*/
     @SubscribeEvent
-    public void LootTableEvent(LootTableLoadEvent event) {
-        if (event.getName().equals(GrassDrops))
-            event.getTable().addPool(LootPool.lootPool()
-                    .add(TableLootEntry.lootTableReference(new ResourceLocation(MOD_ID, "blocks/grass_drops")))
-                    .name("sf_grass_drops").build());
-    }*/
+    public void SaltEvent(BlockEvent.NeighborNotifyEvent event) {
+        if (event.getWorld().getBiome(event.getPos()).getBiomeCategory() == Biome.Category.BEACH || event.getWorld().getBiome(event.getPos()).getBiomeCategory() == Biome.Category.OCEAN) {
+            if (event.getState().getMaterial() == Material.WATER) {
+                for (int i = 0; i < 6; i++) {
+                    if (event.getWorld().getBlockState(event.getPos().relative(UrushiUtils.getDirectionFromInt(i))).getBlock() == Blocks.SAND) {
+                        event.getWorld().setBlock(event.getPos().relative(UrushiUtils.getDirectionFromInt(i)), BlocksRegister.salt_and_sand.get().defaultBlockState(), 2);
+                        event.getWorld().playSound((PlayerEntity) null, event.getPos().relative(UrushiUtils.getDirectionFromInt(i)), SoundEvents.SAND_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
+                    }
+                }
+
+            } else if (event.getState().getBlock() == Blocks.SAND) {
+                boolean flag = false;
+                for (int i = 0; i < 6; i++) {
+                    if (event.getWorld().getBlockState(event.getPos().relative(UrushiUtils.getDirectionFromInt(i))).getMaterial() == Material.WATER) {
+                        flag = true;
+                    }
+                }
+                if (flag) {
+                    event.getWorld().setBlock(event.getPos(), BlocksRegister.salt_and_sand.get().defaultBlockState(), 2);
+                    event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.SAND_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
+                }
+            }
+        }
+    }
     /*
 
     @SubscribeEvent

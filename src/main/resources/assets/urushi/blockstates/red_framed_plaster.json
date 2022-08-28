@@ -124,7 +124,7 @@
             "apply": { "model": "urushi:block/plaster_red_14", "y": 270,  "uvlock": true }
         },
         {   "when": { "north": "true","south": "true","east": "true","west": "true"},
-            "apply": { "model": "urushi:block/red_smooth_planks",  "uvlock": true }
+            "apply": { "model": "urushi:block/smooth_planks_red_urushi_stained",  "uvlock": true }
         },
         
         {   "when": { "north": "true","south": "false","east": "false","west": "true","up": "true","down": "true"},

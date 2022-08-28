@@ -8,6 +8,7 @@ public final class ConfigUrushi {
     public static final ForgeConfigSpec.ConfigValue<Boolean> genCopperOre;
     public static final ForgeConfigSpec.ConfigValue<Integer> maxHightBamboo;
     public static final ForgeConfigSpec.ConfigValue<Boolean> TurnOnSpeedUp;
+    public static final ForgeConfigSpec.ConfigValue<Integer> SecretPassword;
 
     static {
         builder.push("world generation");
@@ -18,6 +19,9 @@ public final class ConfigUrushi {
         builder.pop();
         builder.push("entity settings");
         TurnOnSpeedUp=builder.comment("increase the player walking spped by 16% so that you can place blocks comfortably").define("true/false",true);
+        builder.pop();
+        builder.push("debug");
+        SecretPassword=builder.comment("DO NOT TOUCH").define("secret password",0);
         builder.pop();
         spec=builder.build();
     }

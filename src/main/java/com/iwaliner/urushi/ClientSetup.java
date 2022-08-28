@@ -1,29 +1,31 @@
 package com.iwaliner.urushi;
 
-import com.iwaliner.urushi.Entity.*;
+import com.iwaliner.urushi.Json.CubeAllBlockJsonMaker;
+import com.iwaliner.urushi.Json.GeneratedItemJsonMaker;
+import com.iwaliner.urushi.Json.NormalBlockItemJsonMaker;
 import com.iwaliner.urushi.Renderer.*;
 import com.iwaliner.urushi.Screen.DoubledWoodenCabinetryScreen;
 import com.iwaliner.urushi.Screen.FryerScreen;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.OreBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-
+import net.minecraftforge.fml.loading.FMLPaths;
 import javax.annotation.Nullable;
+import java.io.File;
 
+@OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = ModCore_Urushi.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
 
@@ -90,61 +92,41 @@ public class ClientSetup {
                 renderManager -> new RedOniRenderer(renderManager));
         RenderingRegistry.registerEntityRenderingHandler(EntityRegister.YokoEntity.get(),
                 renderManager -> new YokoRenderer(renderManager));
+
+
+
+/**jsonファイルを自動生成するために開発環境のパスを登録*/
+        if (ConfigUrushi.SecretPassword.get()==88659) {
+           // File parent = Minecraft.getInstance().getResourcePackDirectory().getAbsoluteFile();
+          //  if (parent.getAbsolutePath().contains("run")) {
+                FMLPaths.GAMEDIR.get();
+                ModCore_Urushi.assetsDirectory = new File( FMLPaths.GAMEDIR.get().getParent().toString()+ "/src/main/resources/assets/urushi/");
+                ModCore_Urushi.assetsInBuildDirectory = new File( FMLPaths.GAMEDIR.get().getParent().toString()+ "/build/resources/main/assets/urushi/");
+                ModCore_Urushi.dataDirectory = new File( FMLPaths.GAMEDIR.get().getParent().toString()+ "/src/main/resources/data/");
+                ModCore_Urushi.dataInBuildDirectory = new File( FMLPaths.GAMEDIR.get().getParent().toString()+ "/build/resources/main/data/");
+         //   }
+            if (ModCore_Urushi.assetsDirectory != null) {
+                ModCore_Urushi.logger.info("Directory for json model loaded");
+            }
+
+
+
+            /**jsonファイルを自動生成*/
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.yokan.get());
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.sekihan.get());
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.kitsune_udon.get());
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.RoughStone.get());
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(BlocksRegister.RoughStone.get(),"rough_stone");
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.salt_and_sand.get());
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(BlocksRegister.salt_and_sand.get(),"salt_sand");
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.udon.get());
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.dough.get());
+        }
+
+
     }
 
-    /**モブの挙動・性質を設定*/
-    @SubscribeEvent
-    public static void MobAttributesEvent(EntityAttributeCreationEvent entityRegisterEvent) {
 
-        entityRegisterEvent.put(EntityRegister.CarpEntity.get(),
-                CarpEntity.createAttributes()
-                        .add(Attributes.MAX_HEALTH, 3.0D)
-                        .add(Attributes.ATTACK_DAMAGE, 0.0D)
-                        .add(Attributes.ATTACK_SPEED, 1.0D)
-                        .add(Attributes.FLYING_SPEED, 0.5D)
-                        .add(Attributes.MOVEMENT_SPEED, 0.5D)
-                        .build());
-        entityRegisterEvent.put(EntityRegister.SweetfishEntity.get(),
-                SweetfishEntity.createAttributes()
-                        .add(Attributes.MAX_HEALTH, 3.0D)
-                        .add(Attributes.ATTACK_DAMAGE, 0.0D)
-                        .add(Attributes.ATTACK_SPEED, 1.0D)
-                        .add(Attributes.FLYING_SPEED, 0.5D)
-                        .add(Attributes.MOVEMENT_SPEED, 0.5D)
-                        .build());
-        entityRegisterEvent.put(EntityRegister.GoldfishEntity.get(),
-                GoldfishEntity.createAttributes()
-                        .add(Attributes.MAX_HEALTH, 3.0D)
-                        .add(Attributes.ATTACK_DAMAGE, 0.0D)
-                        .add(Attributes.ATTACK_SPEED, 1.0D)
-                        .add(Attributes.FLYING_SPEED, 0.5D)
-                        .add(Attributes.MOVEMENT_SPEED, 0.5D)
-                        .build());
-        entityRegisterEvent.put(EntityRegister.GhostEntity.get(),
-                GhostEntity.createAttributes()
-                        .add(Attributes.MAX_HEALTH, 20.0D)
-                        .add(Attributes.ATTACK_DAMAGE, 6.0D)
-                        .add(Attributes.ATTACK_SPEED, 0.5D)
-                        .add(Attributes.FLYING_SPEED, 0.5D)
-                        .add(Attributes.MOVEMENT_SPEED, 0.2D)
-                        .build());
-        entityRegisterEvent.put(EntityRegister.RedOniEntity.get(),
-                RedOniEntity.createAttributes()
-                        .add(Attributes.MAX_HEALTH, 60.0D)
-                        .add(Attributes.ATTACK_DAMAGE, 10.0D)
-                        .add(Attributes.ATTACK_SPEED, 0.5D)
-                        .add(Attributes.FLYING_SPEED, 0.5D)
-                        .add(Attributes.MOVEMENT_SPEED, 0.3D)
-                        .build());
-        entityRegisterEvent.put(EntityRegister.YokoEntity.get(),
-                RedOniEntity.createAttributes()
-                        .add(Attributes.MAX_HEALTH, 30.0D)
-                       // .add(Attributes.ATTACK_DAMAGE, 5.0D)
-                       // .add(Attributes.ATTACK_SPEED, 0.5D)
-                        .add(Attributes.FLYING_SPEED, 0.2D)
-                        .add(Attributes.MOVEMENT_SPEED, 0.2D)
-                        .build());
-    }
 
 
 

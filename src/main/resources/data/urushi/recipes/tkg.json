@@ -6,7 +6,7 @@
       "item": "minecraft:egg"
     },
     {
-      "tag": "forge:crops/rice"
+      "item": "urushi:rice"
     }
   ],
   "result": {

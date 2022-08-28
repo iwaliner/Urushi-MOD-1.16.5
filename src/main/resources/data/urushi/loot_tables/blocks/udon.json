@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "urushi:stripped_red_urushi_log"
+          "name": "urushi:udon"
         }
       ],
       "conditions": [

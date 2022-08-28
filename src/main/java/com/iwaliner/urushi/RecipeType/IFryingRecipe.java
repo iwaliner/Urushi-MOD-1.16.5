@@ -6,6 +6,9 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+
 
 public interface IFryingRecipe extends IRecipe<IInventory> {
     ResourceLocation locationType=new ResourceLocation(ModCore_Urushi.MOD_ID,"frying");
