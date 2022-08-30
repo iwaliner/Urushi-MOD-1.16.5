@@ -67,6 +67,21 @@ public class RenderUrushiRegister {
         RenderTypeLookup.setRenderLayer(BlocksRegister.SushiNoren.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlocksRegister.dirt_furnace.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(BlocksRegister.reiryoku_tank_tier1.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_1.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_2.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_3.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_4.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_5.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_6.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_7.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_8.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_9.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_10.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_11.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_12.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_13.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BlocksRegister.kakejiku_14.get(), RenderType.cutout());
+
     }
 
 }

@@ -4,6 +4,7 @@ import com.iwaliner.urushi.Entity.*;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -61,6 +62,7 @@ public class EventSetUp {
                         .add(Attributes.FLYING_SPEED, 0.2D)
                         .add(Attributes.MOVEMENT_SPEED, 0.2D)
                         .build());
+
     }
 
 }

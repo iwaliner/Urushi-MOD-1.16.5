@@ -85,6 +85,7 @@ public class ModCore_Urushi {
         /**ブロックを登録*/
         BlocksRegister.register(modEventBus);
 
+
         /**タイルエンティティを登録*/
         TileEntitiesRegister.register(modEventBus);
 

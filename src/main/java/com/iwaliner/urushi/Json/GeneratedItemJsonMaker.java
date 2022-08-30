@@ -23,18 +23,18 @@ public class GeneratedItemJsonMaker {
     /**
      * ItemのJSONモデル生成と登録をまとめて行うメソッド。
      */
-    public void registerItemModel(Item item) {
+    public void registerItemModel(Item item,String tex) {
         if (item == null)
             return;
             String fileName = item.getRegistryName().getPath();
             // JSONの生成
-            this.BuildJsonModel(item, fileName);
+            this.BuildJsonModel(item, fileName,tex);
             // Model登録
            ModelLoader.addSpecialModel( new ModelResourceLocation(ModCore_Urushi.MOD_ID , fileName));
 
     }
 
-    private static void BuildJsonModel(Item item, String fileName) {
+    private static void BuildJsonModel(Item item, String fileName,String textureName) {
         // デバッグ環境でなければ実行しない
         if (ConfigUrushi.SecretPassword.get()!=88659)
             return;
@@ -42,28 +42,22 @@ public class GeneratedItemJsonMaker {
         // models/itemフォルダに生成する
         File dir = new File(ModCore_Urushi.assetsDirectory, "models/item/");
 
-        if (dir != null && item != null && item instanceof IJsnonModel) {
-            IJsnonModel data = (IJsnonModel) item;
+        if (dir != null && item != null ) {
             Map<String, String> map = Maps.newLinkedHashMap();
-            map.put("layer0", "urushi:item/"+data.getTexName());
-            ItemModel model = INSTANCE.new ItemModel(data.getParent(), map);
-
+            map.put("layer0", "urushi:item/"+textureName);
+            ItemModel model = INSTANCE.new ItemModel("item/generated", map);
             File f = new File(dir + "/" + fileName + ".json");
             if (f.exists())
                 return;
-
             // ファイルを生成
             if (!f.getParentFile().exists()) {
                 f.getParentFile().mkdirs();
             }
-
             try {
                 f.createNewFile();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-
-
 
             // JSONファイルを生成
             try {
@@ -71,11 +65,9 @@ public class GeneratedItemJsonMaker {
                     FileOutputStream fos = new FileOutputStream(f.getPath());
                     OutputStreamWriter osw = new OutputStreamWriter(fos);
                     JsonWriter jsw = new JsonWriter(osw);
-
                     jsw.setIndent("  ");
                     Gson gson = new Gson();
                     gson.toJson(model, model.getClass(), jsw);
-
                     osw.close();
                     fos.close();
                     jsw.close();
@@ -86,31 +78,27 @@ public class GeneratedItemJsonMaker {
         }
 
 
+
+
         // models/itemフォルダに生成する
         File dir2 = new File(ModCore_Urushi.assetsInBuildDirectory, "models/item/");
 
-        if (dir2 != null && item != null && item instanceof IJsnonModel) {
-            IJsnonModel data = (IJsnonModel) item;
+        if (dir2 != null && item != null ) {
             Map<String, String> map = Maps.newLinkedHashMap();
-            map.put("layer0", "urushi:item/"+data.getTexName());
-            ItemModel model = INSTANCE.new ItemModel(data.getParent(),map);
-
+            map.put("layer0", "urushi:item/"+textureName);
+            ItemModel model = INSTANCE.new ItemModel("item/generated",map);
             File f = new File(dir2 + "/" + fileName + ".json");
             if (f.exists())
                 return;
-
             // ファイルを生成。
             if (!f.getParentFile().exists()) {
                 f.getParentFile().mkdirs();
             }
-
             try {
                 f.createNewFile();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-
-
 
             // JSONファイルを生成
             try {
@@ -121,7 +109,6 @@ public class GeneratedItemJsonMaker {
                     jsw.setIndent("  ");
                     Gson gson = new Gson();
                     gson.toJson(model, model.getClass(), jsw);
-
                     osw.close();
                     fos.close();
                     jsw.close();

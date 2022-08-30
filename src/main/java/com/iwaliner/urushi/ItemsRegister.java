@@ -22,6 +22,7 @@ public class ItemsRegister {
     public static final RegistryObject<Item> ItemBlockSikkuiStairs = ITEMS.register("plaster_stairs", () -> {
         return new BlockItem((Block) BlocksRegister.SikkuiStairs.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
+    public static final RegistryObject<Item> sikkui_bars= registerBlockItem("plaster_bars",BlocksRegister.sikkui_bars);
     public static final RegistryObject<Item> OakFramedSikkui = ITEMS.register("oak_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.OakFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> SpruceFramedSikkui = ITEMS.register("spruce_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.SpruceFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> BirchFramedSikkui = ITEMS.register("birch_framed_plaster", () -> {return new BlockItem((Block) BlocksRegister.BirchFramedSikkui.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
@@ -142,6 +143,7 @@ public class ItemsRegister {
     public static final RegistryObject<Item> ItemBlockOakParapet = ITEMS.register("oak_parapet", () -> {
         return new BlockItem((Block) BlocksRegister.OakParapet.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
+    public static final RegistryObject<Item> oak_bars= registerBlockItem("oak_bars",BlocksRegister.oak_bars);
     public static final RegistryObject<Item> ItemBlockSmoothSprucePlanks = ITEMS.register("smooth_spruce_planks", () -> {
         return new BlockItem((Block) BlocksRegister.SmoothSprucePlanks.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
@@ -154,6 +156,7 @@ public class ItemsRegister {
     public static final RegistryObject<Item> ItemBlockSpruceParapet = ITEMS.register("spruce_parapet", () -> {
         return new BlockItem((Block) BlocksRegister.SpruceParapet.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
+    public static final RegistryObject<Item> spruce_bars= registerBlockItem("spruce_bars",BlocksRegister.spruce_bars);
     public static final RegistryObject<Item>  ItemBlockSmoothBirchPlanks = ITEMS.register("smooth_birch_planks", () -> {
         return new BlockItem((Block) BlocksRegister.SmoothBirchPlanks.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
@@ -164,7 +167,7 @@ public class ItemsRegister {
         return new BlockItem((Block) BlocksRegister.SmoothBirchStairs.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
     public static final RegistryObject<Item> ItemBlockBirchParapet = ITEMS.register("birch_parapet", () -> {return new BlockItem((Block) BlocksRegister.BirchParapet.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
-
+    public static final RegistryObject<Item> birch_bars= registerBlockItem("birch_bars",BlocksRegister.birch_bars);
     public static final RegistryObject<Item> ItemBlockSmoothJunglePlanks = ITEMS.register("smooth_jungle_planks", () -> {
         return new BlockItem((Block) BlocksRegister.SmoothJunglePlanks.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
@@ -175,7 +178,7 @@ public class ItemsRegister {
         return new BlockItem((Block) BlocksRegister.SmoothJungleStairs.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
     public static final RegistryObject<Item> ItemBlockJungleParapet = ITEMS.register("jungle_parapet", () -> {return new BlockItem((Block) BlocksRegister.JungleParapet.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
-
+    public static final RegistryObject<Item> jungle_bars= registerBlockItem("jungle_bars",BlocksRegister.jungle_bars);
     public static final RegistryObject<Item> ItemBlockSmoothAcaciaPlanks = ITEMS.register("smooth_acacia_planks", () -> {
         return new BlockItem((Block) BlocksRegister.SmoothAcaciaPlanks.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
@@ -186,7 +189,7 @@ public class ItemsRegister {
         return new BlockItem((Block) BlocksRegister.SmoothAcaciaStairs.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
     public static final RegistryObject<Item> ItemBlockAcaciaParapet = ITEMS.register("acacia_parapet", () -> {return new BlockItem((Block) BlocksRegister.AcaciaParapet.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
-
+    public static final RegistryObject<Item> acacia_bars= registerBlockItem("acacia_bars",BlocksRegister.acacia_bars);
     public static final RegistryObject<Item> ItemBlockSmoothDarkOakPlanks = ITEMS.register("smooth_dark_oak_planks", () -> {
         return new BlockItem((Block) BlocksRegister.SmoothDarkOakPlanks.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
@@ -197,6 +200,8 @@ public class ItemsRegister {
         return new BlockItem((Block) BlocksRegister.SmoothDarkOakStairs.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
     public static final RegistryObject<Item> ItemBlockDarkOakParapet = ITEMS.register("dark_oak_parapet", () -> {return new BlockItem((Block) BlocksRegister.DarkOakParapet.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> dark_oak_bars= registerBlockItem("dark_oak_bars",BlocksRegister.dark_oak_bars);
+    public static final RegistryObject<Item> green_bars= registerBlockItem("green_bars",BlocksRegister.green_bars);
     public static final RegistryObject<Item> ItemBlockJapaneseApricotSapling = ITEMS.register("japanese_apricot_sapling", () -> {
         return new BlockItem((Block) BlocksRegister.JapaneseApricotSapling.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
@@ -507,7 +512,8 @@ public class ItemsRegister {
         return new BlockItem((Block) BlocksRegister.RedUrushiWoodenCabinetrySlab.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
     public static final RegistryObject<Item> ItemBlockFoxHopper = ITEMS.register("fox_hopper", () -> {return new BlockItem((Block) BlocksRegister.FoxHopper.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
-    //public static final RegistryObject<Item> dirt_furnace= registerBlockItem("dirt_furnace",BlocksRegister.dirt_furnace);
+    public static final RegistryObject<Item> dirt_furnace= registerBlockItem("dirt_furnace",BlocksRegister.dirt_furnace);
+    public static final RegistryObject<Item> rice_cauldron= registerBlockItem("rice_cauldron",BlocksRegister.rice_cauldron);
     public static final RegistryObject<Item> OilExtractor = ITEMS.register("oil_extractor", () -> {return new BlockItem((Block) BlocksRegister.OilExtractor.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
    public static final RegistryObject<Item> Fryer = ITEMS.register("fryer", () -> {return new BlockItem((Block) BlocksRegister.Fryer.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> VegetableOil = ITEMS.register("vegetable_oil", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
@@ -532,6 +538,52 @@ public class ItemsRegister {
     public static final RegistryObject<Item> MenOnsenNoren = ITEMS.register("men_onsen_noren", () -> {return new BlockItem((Block) BlocksRegister.MenOnsenNoren.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> WomenOnsenNoren = ITEMS.register("women_onsen_noren", () -> {return new BlockItem((Block) BlocksRegister.WomenOnsenNoren.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> SushiNoren = ITEMS.register("sushi_noren", () -> {return new BlockItem((Block) BlocksRegister.SushiNoren.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> kakejiku_1= registerBlockItem("kakejiku_1",BlocksRegister.kakejiku_1);
+    public static final RegistryObject<Item> kakejiku_2= registerBlockItem("kakejiku_2",BlocksRegister.kakejiku_2);
+    public static final RegistryObject<Item> kakejiku_3= registerBlockItem("kakejiku_3",BlocksRegister.kakejiku_3);
+    public static final RegistryObject<Item> kakejiku_4= registerBlockItem("kakejiku_4",BlocksRegister.kakejiku_4);
+    public static final RegistryObject<Item> kakejiku_5= registerBlockItem("kakejiku_5",BlocksRegister.kakejiku_5);
+    public static final RegistryObject<Item> kakejiku_6= registerBlockItem("kakejiku_6",BlocksRegister.kakejiku_6);
+    public static final RegistryObject<Item> kakejiku_7= registerBlockItem("kakejiku_7",BlocksRegister.kakejiku_7);
+    public static final RegistryObject<Item> kakejiku_8= registerBlockItem("kakejiku_8",BlocksRegister.kakejiku_8);
+    public static final RegistryObject<Item> kakejiku_9= registerBlockItem("kakejiku_9",BlocksRegister.kakejiku_9);
+    public static final RegistryObject<Item> kakejiku_10= registerBlockItem("kakejiku_10",BlocksRegister.kakejiku_10);
+    public static final RegistryObject<Item> kakejiku_11= registerBlockItem("kakejiku_11",BlocksRegister.kakejiku_11);
+    public static final RegistryObject<Item> kakejiku_12= registerBlockItem("kakejiku_12",BlocksRegister.kakejiku_12);
+    public static final RegistryObject<Item> kakejiku_13= registerBlockItem("kakejiku_13",BlocksRegister.kakejiku_13);
+    public static final RegistryObject<Item> kakejiku_14= registerBlockItem("kakejiku_14",BlocksRegister.kakejiku_14);
+    public static final RegistryObject<Item> white_futon= registerBlockItem("white_futon",BlocksRegister.white_futon);
+    public static final RegistryObject<Item> orange_futon= registerBlockItem("orange_futon",BlocksRegister.orange_futon);
+    public static final RegistryObject<Item> magenta_futon= registerBlockItem("magenta_futon",BlocksRegister.magenta_futon);
+    public static final RegistryObject<Item> light_blue_futon= registerBlockItem("light_blue_futon",BlocksRegister.light_blue_futon);
+    public static final RegistryObject<Item> yellow_futon= registerBlockItem("yellow_futon",BlocksRegister.yellow_futon);
+    public static final RegistryObject<Item> lime_futon= registerBlockItem("lime_futon",BlocksRegister.lime_futon);
+    public static final RegistryObject<Item> pink_futon= registerBlockItem("pink_futon",BlocksRegister.pink_futon);
+    public static final RegistryObject<Item> gray_futon= registerBlockItem("gray_futon",BlocksRegister.gray_futon);
+    public static final RegistryObject<Item> light_gray_futon= registerBlockItem("light_gray_futon",BlocksRegister.light_gray_futon);
+    public static final RegistryObject<Item> cyan_futon= registerBlockItem("cyan_futon",BlocksRegister.cyan_futon);
+    public static final RegistryObject<Item> purple_futon= registerBlockItem("purple_futon",BlocksRegister.purple_futon);
+    public static final RegistryObject<Item> blue_futon= registerBlockItem("blue_futon",BlocksRegister.blue_futon);
+    public static final RegistryObject<Item> brown_futon= registerBlockItem("brown_futon",BlocksRegister.brown_futon);
+    public static final RegistryObject<Item> green_futon= registerBlockItem("green_futon",BlocksRegister.green_futon);
+    public static final RegistryObject<Item> red_futon= registerBlockItem("red_futon",BlocksRegister.red_futon);
+    public static final RegistryObject<Item> black_futon= registerBlockItem("black_futon",BlocksRegister.black_futon);
+    public static final RegistryObject<Item> white_cushion = ITEMS.register("white_cushion", () -> {return new CushionItem(DyeColor.WHITE,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> orange_cushion = ITEMS.register("orange_cushion", () -> {return new CushionItem(DyeColor.ORANGE,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> magenta_cushion = ITEMS.register("magenta_cushion", () -> {return new CushionItem(DyeColor.MAGENTA,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> light_blue_cushion = ITEMS.register("light_blue_cushion", () -> {return new CushionItem(DyeColor.LIGHT_BLUE,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> yellow_cushion = ITEMS.register("yellow_cushion", () -> {return new CushionItem(DyeColor.YELLOW,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> lime_cushion = ITEMS.register("lime_cushion", () -> {return new CushionItem(DyeColor.LIME,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> pink_cushion = ITEMS.register("pink_cushion", () -> {return new CushionItem(DyeColor.PINK,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> gray_cushion = ITEMS.register("gray_cushion", () -> {return new CushionItem(DyeColor.GRAY,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> light_gray_cushion = ITEMS.register("light_gray_cushion", () -> {return new CushionItem(DyeColor.LIGHT_GRAY,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> cyan_cushion = ITEMS.register("cyan_cushion", () -> {return new CushionItem(DyeColor.CYAN,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> purple_cushion = ITEMS.register("purple_cushion", () -> {return new CushionItem(DyeColor.PURPLE,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> blue_cushion = ITEMS.register("blue_cushion", () -> {return new CushionItem(DyeColor.BLUE,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> brown_cushion = ITEMS.register("brown_cushion", () -> {return new CushionItem(DyeColor.BROWN,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> green_cushion = ITEMS.register("green_cushion", () -> {return new CushionItem(DyeColor.GREEN,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> red_cushion = ITEMS.register("red_cushion", () -> {return new CushionItem(DyeColor.RED,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
+    public static final RegistryObject<Item> black_cushion = ITEMS.register("black_cushion", () -> {return new CushionItem(DyeColor.BLACK,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> ItemBlockBlankFusuma = ITEMS.register("blank_fusuma", () -> {return new BlockItem((Block) BlocksRegister.BlankFusuma.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> ItemBlockBlueSeigaihaFusuma = ITEMS.register("blue_seigaiha_fusuma", () -> {return new BlockItem((Block) BlocksRegister.BlueSeigaihaFusuma.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> ItemBlockBlueSayagataFusuma = ITEMS.register("blue_sayagata_fusuma", () -> {return new BlockItem((Block) BlocksRegister.BlueSayagataFusuma.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
@@ -595,7 +647,7 @@ public class ItemsRegister {
         return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));
     });
     public static final RegistryObject<Item> Rice = ITEMS.register("rice", () -> {
-        return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Rice));
+        return new PlaceableFoodItem((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Rice));
     });
     public static final RegistryObject<Item> RiceMalt = ITEMS.register("rice_malt", () -> {
         return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));
@@ -610,13 +662,13 @@ public class ItemsRegister {
         return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.RoastedRiceCake));
     });
     public static final RegistryObject<Item> Gyudon = ITEMS.register("gyudon", () -> {
-        return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Gyudon));
+        return new PlaceableFoodItem((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Gyudon));
     });
     public static final RegistryObject<Item> Butadon = ITEMS.register("butadon", () -> {
-        return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Butadon));
+        return new PlaceableFoodItem((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Butadon));
     });
-    public static final RegistryObject<Item> TKG = ITEMS.register("tkg", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.TKG));});
-    public static final RegistryObject<Item> sekihan= registerGeneratedItem("sekihan","rice_azuki",FoodsUrushi.Sekihan);
+    public static final RegistryObject<Item> TKG = ITEMS.register("tkg", () -> {return new PlaceableFoodItem((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.TKG));});
+    public static final RegistryObject<Item> sekihan = ITEMS.register("sekihan", () -> {return new PlaceableFoodItem((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Sekihan));});
     public static final RegistryObject<Item> SakuraMochi = ITEMS.register("sakura_mochi", () -> {
         return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.SakuraMochi));
     });
@@ -634,7 +686,7 @@ public class ItemsRegister {
     public static final RegistryObject<Item> KusaDango = ITEMS.register("kusa_dango", () -> {
         return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.KusaDango));
     });
-    public static final RegistryObject<Item> yokan= registerGeneratedItem("yokan","yokan",FoodsUrushi.Yokan);
+    public static final RegistryObject<Item> yokan= ITEMS.register("yokan", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Yokan));});
     public static final RegistryObject<Item> sakura_yokan= ITEMS.register("sakura_yokan", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.SakuraYokan));});
     public static final RegistryObject<Item> Karaage = ITEMS.register("karaage", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Karaage));});
     public static final RegistryObject<Item> Tofu = ITEMS.register("tofu", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Tofu));});
@@ -642,7 +694,7 @@ public class ItemsRegister {
     public static final RegistryObject<Item> noodle_knife = ITEMS.register("noodle_knife", () -> {return new NoodleKnifeItem((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).durability(1024));});
     public static final RegistryObject<Item> dough= registerBlockItem("dough",BlocksRegister.dough);
     public static final RegistryObject<Item> udon= registerBlockItem("udon",BlocksRegister.udon);
-    public static final RegistryObject<Item> kitsune_udon= registerGeneratedItem("kitsune_udon","udon_kitsune",FoodsUrushi.KitsuneUdon);
+    public static final RegistryObject<Item> kitsune_udon= ITEMS.register("kitsune_udon", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.KitsuneUdon));});
     public static final RegistryObject<Item> CarpBucket = ITEMS.register("carp_bucket", () -> {return new CarpBucketItem( Fluids.WATER,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     public static final RegistryObject<Item> Carp = ITEMS.register("carp", () -> {return new Item((new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(FoodsUrushi.Carp));});
     public static final RegistryObject<Item> SweetfishBucket = ITEMS.register("sweetfish_bucket", () -> {return new SweetfishBucketItem( Fluids.WATER,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
@@ -718,7 +770,5 @@ public class ItemsRegister {
     private static RegistryObject<Item> registerBlockItem(String name,RegistryObject<Block> block) {
      return    ITEMS.register(name, () -> {return new BlockItem( (Block) block.get(), (new Item.Properties()).tab(ModCore_Urushi.TabUrushi));});
     }
-    private static RegistryObject<Item> registerGeneratedItem(String name,String textureName,Food food) {
-        return  food==null?  ITEMS.register(name, () -> {return new GeneratedItem(textureName,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi));}):ITEMS.register(name, () -> {return new GeneratedItem(textureName,(new net.minecraft.item.Item.Properties()).tab(ModCore_Urushi.TabUrushi).food(food));});
-    }
+
 }

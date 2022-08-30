@@ -2,6 +2,7 @@ package com.iwaliner.urushi;
 
 
 import com.iwaliner.urushi.Entity.*;
+import com.iwaliner.urushi.Entity.FoodEntity.*;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +21,12 @@ public class EntityRegister {
     public static final RegistryObject<EntityType<GhostEntity>> GhostEntity=Entities.register("ghost", () -> EntityType.Builder.<GhostEntity>of(GhostEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"ghost").toString()));
     public static final RegistryObject<EntityType<RedOniEntity>> RedOniEntity=Entities.register("red_oni", () -> EntityType.Builder.<RedOniEntity>of(RedOniEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"red_oni").toString()));
     public static final RegistryObject<EntityType<YokoEntity>> YokoEntity=Entities.register("yoko", () -> EntityType.Builder.<YokoEntity>of(YokoEntity::new, EntityClassification.CREATURE).sized(0.6F, 1.95F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"yoko").toString()));
-
+    public static final RegistryObject<EntityType<CushionEntity>> CushionEntity=Entities.register("cushion", () -> EntityType.Builder.<CushionEntity>of(CushionEntity::new, EntityClassification.MISC).sized(0.7F, 0.2F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"butadon_food").toString()));
+    public static final RegistryObject<EntityType<com.iwaliner.urushi.Entity.FoodEntity.RiceFoodEntity>> RiceFoodEntity=Entities.register("rice_food", () -> EntityType.Builder.<RiceFoodEntity>of(RiceFoodEntity::new, EntityClassification.MISC).sized(0.4F, 0.4F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"rice_food").toString()));
+    public static final RegistryObject<EntityType<SekihanFoodEntity>> SekihanFoodEntity=Entities.register("sekihan_food", () -> EntityType.Builder.<SekihanFoodEntity>of(SekihanFoodEntity::new, EntityClassification.MISC).sized(0.4F, 0.4F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"sekihan_food").toString()));
+    public static final RegistryObject<EntityType<TKGFoodEntity>> TKGFoodEntity=Entities.register("tkg_food", () -> EntityType.Builder.<TKGFoodEntity>of(com.iwaliner.urushi.Entity.FoodEntity.TKGFoodEntity::new, EntityClassification.MISC).sized(0.4F, 0.4F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"tkg_food").toString()));
+    public static final RegistryObject<EntityType<com.iwaliner.urushi.Entity.FoodEntity.GyudonFoodEntity>> GyudonFoodEntity=Entities.register("gyudon_food", () -> EntityType.Builder.<GyudonFoodEntity>of(GyudonFoodEntity::new, EntityClassification.MISC).sized(0.4F, 0.4F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"gyudon_food").toString()));
+    public static final RegistryObject<EntityType<com.iwaliner.urushi.Entity.FoodEntity.ButadonFoodEntity>> ButadonFoodEntity=Entities.register("butadon_food", () -> EntityType.Builder.<ButadonFoodEntity>of(ButadonFoodEntity::new, EntityClassification.MISC).sized(0.4F, 0.4F).clientTrackingRange(8).build(new ResourceLocation(ModCore_Urushi.MOD_ID,"butadon_food").toString()));
     public static void register(IEventBus eventBus) {
         Entities.register(eventBus);
     }

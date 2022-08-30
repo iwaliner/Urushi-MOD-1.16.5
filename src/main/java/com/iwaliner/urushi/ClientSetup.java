@@ -4,6 +4,7 @@ import com.iwaliner.urushi.Json.CubeAllBlockJsonMaker;
 import com.iwaliner.urushi.Json.GeneratedItemJsonMaker;
 import com.iwaliner.urushi.Json.NormalBlockItemJsonMaker;
 import com.iwaliner.urushi.Renderer.*;
+import com.iwaliner.urushi.Renderer.FoodRenderer.*;
 import com.iwaliner.urushi.Screen.DoubledWoodenCabinetryScreen;
 import com.iwaliner.urushi.Screen.FryerScreen;
 import net.minecraft.block.Blocks;
@@ -92,6 +93,18 @@ public class ClientSetup {
                 renderManager -> new RedOniRenderer(renderManager));
         RenderingRegistry.registerEntityRenderingHandler(EntityRegister.YokoEntity.get(),
                 renderManager -> new YokoRenderer(renderManager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegister.RiceFoodEntity.get(),
+                renderManager -> new RiceFoodRenderer(renderManager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegister.SekihanFoodEntity.get(),
+                renderManager -> new SekihanFoodRenderer(renderManager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegister.TKGFoodEntity.get(),
+                renderManager -> new TKGFoodRenderer(renderManager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegister.GyudonFoodEntity.get(),
+                renderManager -> new GyudonFoodRenderer(renderManager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegister.ButadonFoodEntity.get(),
+                renderManager -> new ButadonFoodRenderer(renderManager));
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegister.CushionEntity.get(),
+                renderManager -> new CushionRenderer(renderManager));
 
 
 
@@ -112,15 +125,30 @@ public class ClientSetup {
 
 
             /**jsonファイルを自動生成*/
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.yokan.get());
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.sekihan.get());
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.kitsune_udon.get());
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.yokan.get(),"yokan");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.white_cushion.get(),"cushion_white");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.orange_cushion.get(),"cushion_orange");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.magenta_cushion.get(),"cushion_magenta");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.light_blue_cushion.get(),"cushion_light_blue");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.yellow_cushion.get(),"cushion_yellow");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.lime_cushion.get(),"cushion_lime");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.pink_cushion.get(),"cushion_pink");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.gray_cushion.get(),"cushion_gray");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.cyan_cushion.get(),"cushion_cyan");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.purple_cushion.get(),"cushion_purple");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.blue_cushion.get(),"cushion_blue");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.brown_cushion.get(),"cushion_brown");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.green_cushion.get(),"cushion_green");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.red_cushion.get(),"cushion_red");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.black_cushion.get(),"cushion_black");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.light_gray_cushion.get(),"cushion_silver");
             NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.RoughStone.get());
             CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(BlocksRegister.RoughStone.get(),"rough_stone");
             NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.salt_and_sand.get());
             CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(BlocksRegister.salt_and_sand.get(),"salt_sand");
             NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.udon.get());
             NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.dough.get());
+
         }
 
 

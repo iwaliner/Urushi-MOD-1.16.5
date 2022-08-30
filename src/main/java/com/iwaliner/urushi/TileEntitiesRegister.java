@@ -24,6 +24,7 @@ public class TileEntitiesRegister {
     public static final RegistryObject<TileEntityType<ReiryokuTankTier1TileEntity>>  ReiryokuTankTier1=Tiles.register("reiryoku_tank", () -> TileEntityType.Builder.of(ReiryokuTankTier1TileEntity::new, BlocksRegister.reiryoku_tank_tier1.get()).build(null));
     public static final RegistryObject<TileEntityType<ReiryokuPipeTileEntity>>  ReiryokuPipe=Tiles.register("reiryoku_pipe", () -> TileEntityType.Builder.of(ReiryokuPipeTileEntity::new, BlocksRegister.reiryoku_pipe.get()).build(null));
     public static final RegistryObject<TileEntityType<ReiryokuAltarTileEntity>>  ReiryokuAltar=Tiles.register("reiryoku_altar", () -> TileEntityType.Builder.of(ReiryokuAltarTileEntity::new, BlocksRegister.reiryoku_altar.get()).build(null));
+    public static final RegistryObject<TileEntityType<RiceCauldronTileEntity>>  RiceCauldron=Tiles.register("rice_cauldron", () -> TileEntityType.Builder.of(RiceCauldronTileEntity::new, BlocksRegister.rice_cauldron.get()).build(null));
     public static void register(IEventBus eventBus) {
         Tiles.register(eventBus);
     }

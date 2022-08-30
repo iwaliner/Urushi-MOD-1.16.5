@@ -1,9 +1,0 @@
-{
-	"credit": "Made with Blockbench",
-	"parent": "urushi:block/kakejiku_base",
-	"textures": {
-		"0": "urushi:block/kakejiku_usagitokame_upper",
-		"1": "urushi:block/kakejiku_usagitokame_under",
-		"particle": "urushi:block/kakejiku_usagitokame_upper"
-	}
-}

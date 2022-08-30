@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"0": "block/anvil_base",
+		"0": "block/anvil",
 		"1": "urushi:block/rice_raw",
-		"particle": "block/anvil_base"
+		"particle": "block/anvil"
 	},
 	"elements": [
 		{

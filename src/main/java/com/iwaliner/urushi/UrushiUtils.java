@@ -11,8 +11,10 @@ import com.iwaliner.urushi.TileEntity.IReiryokuPipe;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -44,6 +46,20 @@ public class UrushiUtils {
             case EAST : return 5;
             default:    return 6;
         }
+    }
+    public static EntityType<?> getEntityTypeFromFoodItem(Item item){
+        if(item==ItemsRegister.Rice.get()){
+            return EntityRegister.RiceFoodEntity.get();
+        }else if(item==ItemsRegister.sekihan.get()){
+            return EntityRegister.SekihanFoodEntity.get();
+        }else if(item==ItemsRegister.TKG.get()){
+            return EntityRegister.TKGFoodEntity.get();
+        }else if(item==ItemsRegister.Gyudon.get()){
+            return EntityRegister.GyudonFoodEntity.get();
+        }else if(item==ItemsRegister.Butadon.get()){
+            return EntityRegister.ButadonFoodEntity.get();
+        }
+        return EntityRegister.RiceFoodEntity.get();
     }
     public static boolean isBewitchable(Item item){
         if(bewitchableMap.containsKey(item)||item instanceof HasReiryokuItem){
