@@ -1,4 +1,5 @@
 package com.iwaliner.urushi;
+import com.iwaliner.urushi.Block.CutoutLeavesBlock;
 import com.iwaliner.urushi.Block.IronIngotBlock;
 import com.iwaliner.urushi.Proxy.ClientProxy;
 import com.iwaliner.urushi.Proxy.CommonProxy;
@@ -8,11 +9,14 @@ import com.iwaliner.urushi.World.TreeGenerator;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -82,15 +86,13 @@ public class ModCore_Urushi {
         /**エンティティを登録*/
         EntityRegister.register(modEventBus);
 
-        /**ブロックを登録*/
-        BlocksRegister.register(modEventBus);
+        /**ブロックとアイテムを登録*/
+        ItemAndBlockRegister.register(modEventBus);
 
 
         /**タイルエンティティを登録*/
         TileEntitiesRegister.register(modEventBus);
 
-        /**アイテムを登録*/
-        ItemsRegister.register(modEventBus);
 
         /**レシピタイプを登録*/
         RecipeTypeRegister.register(modEventBus);
@@ -146,6 +148,7 @@ public class ModCore_Urushi {
 
             List<Supplier<ConfiguredFeature<?,?>>> base=event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION);
             base.add(()-> TreeGenerator.Cypress.squared().decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.15F, 1))));
+            base.add(()-> TreeGenerator.JapaneseCedar.squared().decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(0, 0.15F, 1))));
 
         }
         if(key==Biomes.WOODED_HILLS){
@@ -160,18 +163,20 @@ public class ModCore_Urushi {
     /**燃料を登録*/
     @SubscribeEvent
     public void FuelEvent(FurnaceFuelBurnTimeEvent event) {
-        if (event.getItemStack().getItem()==ItemsRegister.BambooCharcoal.get()) {
+        if (event.getItemStack().getItem()==ItemAndBlockRegister.BambooCharcoal.get()) {
             event.setBurnTime(1600);
-        }else if(event.getItemStack().getItem()==ItemsRegister.JapaneseApricotBark.get()) {
+        }else if(event.getItemStack().getItem()==ItemAndBlockRegister.JapaneseApricotBark.get()) {
             event.setBurnTime(200);
-        }else if(event.getItemStack().getItem()==ItemsRegister.SakuraBark.get()) {
+        }else if(event.getItemStack().getItem()==ItemAndBlockRegister.SakuraBark.get()) {
             event.setBurnTime(200);
-        }else if(event.getItemStack().getItem()==ItemsRegister.CypressBark.get()) {
+        }else if(event.getItemStack().getItem()==ItemAndBlockRegister.CypressBark.get()) {
             event.setBurnTime(200);
-        }else if(event.getItemStack().getItem()==ItemsRegister.BambooCharcoalBlock.get()) {
+        }else if(event.getItemStack().getItem()==ItemAndBlockRegister.japanese_cedar_bark.get()) {
+            event.setBurnTime(200);
+        }else if(event.getItemStack().getItem()== Item.byBlock(ItemAndBlockRegister.BambooCharcoalBlock.get())) {
             event.setBurnTime(16000);
         }
-        /*else if(event.getItemStack().getItem()==ItemsRegister.VegetableOil.get()) {
+        /*else if(event.getItemStack().getItem()==ItemAndBlockRegister.VegetableOil.get()) {
             event.setBurnTime(800);
         }*/
     }
@@ -179,8 +184,8 @@ public class ModCore_Urushi {
     /**油揚げを狐が食べると狐火に*/
     @SubscribeEvent
     public void FoxEvent(LivingEquipmentChangeEvent event) {
-        if (event.getEntityLiving() instanceof FoxEntity&&event.getFrom().getItem()== ItemsRegister.AburaAge.get()) {
-            event.getEntityLiving().setItemSlot(EquipmentSlotType.MAINHAND,new ItemStack(ItemsRegister.Kitsunebi.get()));
+        if (event.getEntityLiving() instanceof FoxEntity&&event.getFrom().getItem().is(TagUrushi.KITSUNEBI_INGREDIENT)) {
+            event.getEntityLiving().setItemSlot(EquipmentSlotType.MAINHAND,new ItemStack(ItemAndBlockRegister.KitsunebiItem.get()));
         }
     }
 
@@ -190,7 +195,7 @@ public class ModCore_Urushi {
         if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof IronIngotBlock){
             {
                 if(event.getEntity() instanceof PlayerEntity) {
-                   if( event.getPlayer().getCooldowns().isOnCooldown(ItemsRegister.Hammer.get())) {
+                   if( event.getPlayer().getCooldowns().isOnCooldown(ItemAndBlockRegister.Hammer.get())) {
                       event.getWorld().destroyBlock(event.getPos(),true);
                             event.setCanceled(true);
                     }
@@ -214,13 +219,13 @@ public class ModCore_Urushi {
     public void GrassDropEvent(BlockEvent.BreakEvent event) {
         if (!event.getPlayer().isCreative() && (event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.FERN || event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.TALL_GRASS || event.getWorld().getBlockState(event.getPos()).getBlock()==Blocks.GRASS) ) {
             if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
-                ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(BlocksRegister.RiceCrop.get()));
+                ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(ItemAndBlockRegister.RiceCrop.get()));
                 event.getWorld().addFreshEntity(entity);
             } else if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
-                ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(BlocksRegister.SoyCrop.get()));
+                ItemEntity entity = new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(ItemAndBlockRegister.SoyCrop.get()));
                 event.getWorld().addFreshEntity(entity);
             } else if (((World) event.getWorld()).random.nextFloat() < 0.075F) {
-                ItemEntity entity = new ItemEntity((World) event.getWorld(), (double) event.getPos().getX(), (double) event.getPos().getY(), (double) event.getPos().getZ(), new ItemStack(BlocksRegister.AzukiCrop.get()));
+                ItemEntity entity = new ItemEntity((World) event.getWorld(), (double) event.getPos().getX(), (double) event.getPos().getY(), (double) event.getPos().getZ(), new ItemStack(ItemAndBlockRegister.AzukiCrop.get()));
                 event.getWorld().addFreshEntity(entity);
             }
         }
@@ -245,7 +250,9 @@ public class ModCore_Urushi {
     @SubscribeEvent
     public void LeavesDamageEvent(LivingHurtEvent event) {
         if(event.getSource()==DamageSource.FALL){
-            if(event.getEntityLiving().level.getBlockState(event.getEntityLiving().blockPosition().below()).getBlock() instanceof LeavesBlock){
+            if(event.getEntityLiving().level.getBlockState(event.getEntityLiving().blockPosition().below()).getBlock() instanceof LeavesBlock||event.getEntityLiving().level.getBlockState(event.getEntityLiving().blockPosition().below()).getBlock() instanceof CutoutLeavesBlock){
+                event.setCanceled(true);
+            }else if(event.getEntityLiving().level.getBlockState(event.getEntityLiving().blockPosition().below()).getBlock().is(TagUrushi.NO_FALLING_DAMAGE)){
                 event.setCanceled(true);
             }
         }
@@ -257,7 +264,7 @@ public class ModCore_Urushi {
             if (event.getState().getMaterial() == Material.WATER) {
                 for (int i = 0; i < 6; i++) {
                     if (event.getWorld().getBlockState(event.getPos().relative(UrushiUtils.getDirectionFromInt(i))).getBlock() == Blocks.SAND) {
-                        event.getWorld().setBlock(event.getPos().relative(UrushiUtils.getDirectionFromInt(i)), BlocksRegister.salt_and_sand.get().defaultBlockState(), 2);
+                        event.getWorld().setBlock(event.getPos().relative(UrushiUtils.getDirectionFromInt(i)), ItemAndBlockRegister.salt_and_sand.get().defaultBlockState(), 2);
                         event.getWorld().playSound((PlayerEntity) null, event.getPos().relative(UrushiUtils.getDirectionFromInt(i)), SoundEvents.SAND_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
                     }
                 }
@@ -270,9 +277,18 @@ public class ModCore_Urushi {
                     }
                 }
                 if (flag) {
-                    event.getWorld().setBlock(event.getPos(), BlocksRegister.salt_and_sand.get().defaultBlockState(), 2);
+                    event.getWorld().setBlock(event.getPos(), ItemAndBlockRegister.salt_and_sand.get().defaultBlockState(), 2);
                     event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.SAND_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
                 }
+            }
+        }
+    }
+    @SubscribeEvent
+    public void EndermanPlaceEvent(BlockEvent.EntityPlaceEvent event) {
+        if(ConfigUrushi.StopEndermanPlace.get()) {
+            if (event.getEntity() instanceof EndermanEntity) {
+                event.getEntity().kill();
+                event.setCanceled(true);
             }
         }
     }
@@ -280,8 +296,8 @@ public class ModCore_Urushi {
 
     @SubscribeEvent
     public void IceWaterEvent(BlockEvent.BreakEvent event) {
-        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, event.getPlayer().getMainHandItem()) == 0 && event.getWorld().getBlockState(event.getPos()).getBlock() == net.minecraft.block.BlocksRegister.ICE) {
-            event.getWorld().setBlock(event.getPos(), net.minecraft.block.BlocksRegister.WATER.defaultBlockState(), 2);
+        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, event.getPlayer().getMainHandItem()) == 0 && event.getWorld().getBlockState(event.getPos()).getBlock() == net.minecraft.block.ItemAndBlockRegister.ICE) {
+            event.getWorld().setBlock(event.getPos(), net.minecraft.block.ItemAndBlockRegister.WATER.defaultBlockState(), 2);
         }
 
     }
@@ -302,23 +318,23 @@ public class ModCore_Urushi {
         if (event.getState().getMaterial() == Material.FIRE) {
             Block block = event.getState().getBlock();
             if (event.getWorld().getBlockState(event.getPos().offset(0, -1, 0)).getBlock() instanceof GrassBlock) {
-                event.getWorld().setBlock(event.getPos().offset(0, -1, 0), net.minecraft.block.BlocksRegister.DIRT.defaultBlockState(), 512);
+                event.getWorld().setBlock(event.getPos().offset(0, -1, 0), net.minecraft.block.ItemAndBlockRegister.DIRT.defaultBlockState(), 512);
             }
 
             if (event.getWorld().getBlockState(event.getPos().offset(1, 0, 0)).getBlock() instanceof GrassBlock) {
-                event.getWorld().setBlock(event.getPos().offset(1, 0, 0), net.minecraft.block.BlocksRegister.DIRT.defaultBlockState(), 512);
+                event.getWorld().setBlock(event.getPos().offset(1, 0, 0), net.minecraft.block.ItemAndBlockRegister.DIRT.defaultBlockState(), 512);
             }
 
             if (event.getWorld().getBlockState(event.getPos().offset(-1, 0, 0)).getBlock() instanceof GrassBlock) {
-                event.getWorld().setBlock(event.getPos().offset(-1, 0, 0), net.minecraft.block.BlocksRegister.DIRT.defaultBlockState(), 512);
+                event.getWorld().setBlock(event.getPos().offset(-1, 0, 0), net.minecraft.block.ItemAndBlockRegister.DIRT.defaultBlockState(), 512);
             }
 
             if (event.getWorld().getBlockState(event.getPos().offset(0, 0, 1)).getBlock() instanceof GrassBlock) {
-                event.getWorld().setBlock(event.getPos().offset(0, 0, 1), net.minecraft.block.BlocksRegister.DIRT.defaultBlockState(), 512);
+                event.getWorld().setBlock(event.getPos().offset(0, 0, 1), net.minecraft.block.ItemAndBlockRegister.DIRT.defaultBlockState(), 512);
             }
 
             if (event.getWorld().getBlockState(event.getPos().offset(0, 0, -1)).getBlock() instanceof GrassBlock) {
-                event.getWorld().setBlock(event.getPos().offset(0, 0, -1), net.minecraft.block.BlocksRegister.DIRT.defaultBlockState(), 512);
+                event.getWorld().setBlock(event.getPos().offset(0, 0, -1), net.minecraft.block.ItemAndBlockRegister.DIRT.defaultBlockState(), 512);
             }
         }
 

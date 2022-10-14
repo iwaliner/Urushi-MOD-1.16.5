@@ -1,8 +1,8 @@
 package com.iwaliner.urushi.Entity;
 
 import com.iwaliner.urushi.EntityRegister;
-import com.iwaliner.urushi.BlocksRegister;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 
 import net.minecraft.block.BushBlock;
 import net.minecraft.entity.EntityType;
@@ -53,7 +53,7 @@ public class KitsunebiEntity extends ProjectileItemEntity {
 
 
     protected Item getDefaultItem() {
-        return ItemsRegister.Kitsunebi.get();
+        return ItemAndBlockRegister.KitsunebiItem.get();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -76,7 +76,7 @@ public class KitsunebiEntity extends ProjectileItemEntity {
 
     protected void onHitEntity(EntityRayTraceResult result) {
         if (!this.level.isClientSide) {
-            ItemEntity itemEntity = new ItemEntity(this.level, this.getX(), this.getY(),this.getZ(), new ItemStack(ItemsRegister.Kitsunebi.get()));
+            ItemEntity itemEntity = new ItemEntity(this.level, this.getX(), this.getY(),this.getZ(), new ItemStack(ItemAndBlockRegister.Kitsunebi.get()));
            this.level.addFreshEntity(itemEntity);
             this.remove();
         }
@@ -84,15 +84,15 @@ public class KitsunebiEntity extends ProjectileItemEntity {
 
     protected void onHit(RayTraceResult result) {
         super.onHit(result);
-        if (BlocksRegister.Kitsunebi.isPresent()) {
+        if (ItemAndBlockRegister.Kitsunebi.isPresent()) {
             BlockPos offsetPos = new BlockPos(Math.floor(this.getX()), Math.floor(this.getY()), Math.floor(this.getZ()));
             //  BlockPos offsetPos = new BlockPos(Math.floor(result.getLocation().x), Math.floor(result.getLocation().y), Math.floor(result.getLocation().z));
             if(this.level.getBlockState(offsetPos).isAir()||this.level.getBlockState(offsetPos).getBlock() instanceof BushBlock) {
-                this.level.setBlockAndUpdate(offsetPos, BlocksRegister.Kitsunebi.get().defaultBlockState());
+                this.level.setBlockAndUpdate(offsetPos, ItemAndBlockRegister.Kitsunebi.get().defaultBlockState());
 
             }else{
                if (!this.level.isClientSide) {
-                    ItemEntity itemEntity = new ItemEntity(this.level, offsetPos.getX()+0.5D,offsetPos.getX()+0.5D, offsetPos.getX()+0.5D, new ItemStack(ItemsRegister.Kitsunebi.get()));
+                    ItemEntity itemEntity = new ItemEntity(this.level, offsetPos.getX()+0.5D,offsetPos.getX()+0.5D, offsetPos.getX()+0.5D, new ItemStack(ItemAndBlockRegister.Kitsunebi.get()));
                   this.level.addFreshEntity(itemEntity);
 
                 }

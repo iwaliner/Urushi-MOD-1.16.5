@@ -1,6 +1,6 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,10 +18,10 @@ public class LacquerLogBlock extends RotatedPillarBlock {
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
 
-if(BlocksRegister.ChiseledLacquerLog.isPresent()) {
+if(ItemAndBlockRegister.ChiseledLacquerLog.isPresent()) {
     if(result.getDirection()!=Direction.UP&&result.getDirection()!=Direction.DOWN){
     if (player.getItemInHand(hand).getItem() instanceof ToolItem || player.getItemInHand(hand).getItem() == Items.FLINT) {
-        world.setBlock(pos, BlocksRegister.ChiseledLacquerLog.get().defaultBlockState().setValue(ChiseledLacquerLogBlock.FACING, result.getDirection()), 4);
+        world.setBlock(pos, ItemAndBlockRegister.ChiseledLacquerLog.get().defaultBlockState().setValue(ChiseledLacquerLogBlock.FACING, result.getDirection()), 4);
         world.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
     }}

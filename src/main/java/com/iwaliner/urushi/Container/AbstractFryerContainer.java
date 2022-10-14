@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Container;
 
 import com.google.common.collect.ImmutableList;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.RecipeType.FryingRecipe;
 import com.iwaliner.urushi.Slot.FryerFuelSlot;
 import net.minecraft.client.util.RecipeBookCategories;
@@ -155,7 +155,7 @@ public abstract class AbstractFryerContainer extends RecipeBookContainer<IInvent
     }
 
     protected boolean isFuel(ItemStack itemStack) {
-        return itemStack.getItem()== ItemsRegister.VegetableOil.get();
+        return itemStack.getItem()== ItemAndBlockRegister.VegetableOil.get();
     }
 
     @OnlyIn(Dist.CLIENT)

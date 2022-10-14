@@ -1,6 +1,6 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -88,7 +88,7 @@ public class KakejikuBlock extends HorizonalRotateBlock{
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
         if(nextBlock==null){
-            nextBlock=BlocksRegister.kakejiku_1.get();
+            nextBlock=ItemAndBlockRegister.kakejiku_1.get();
         }
         Direction direction=state.getValue(FACING);
        if(nextBlock instanceof KakejikuBlock) {

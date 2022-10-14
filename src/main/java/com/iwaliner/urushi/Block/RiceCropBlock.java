@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.BlocksRegister;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FarmlandBlock;
@@ -31,13 +31,13 @@ public class RiceCropBlock extends CropsBlock {
         return p_200014_1_.getBlock() instanceof FarmlandBlock;
     }
     protected IItemProvider getBaseSeedId() {
-        return ItemsRegister.RiceCrop.get();
+        return ItemAndBlockRegister.RiceCrop.get();
     }
 
     @Override
     public void onPlace(BlockState state, World world, BlockPos pos, BlockState state2, boolean boo) {
         if(world.getBlockState(pos.below()).getBlock()== net.minecraft.block.Blocks.FARMLAND){
-            world.setBlockAndUpdate(pos.below(), BlocksRegister.PaddyField.get().defaultBlockState());
+            world.setBlockAndUpdate(pos.below(), ItemAndBlockRegister.PaddyField.get().defaultBlockState());
         }
     }
     @Override

@@ -5,7 +5,7 @@ import com.iwaliner.urushi.Block.AbstractHasReiryokuBlock;
 import com.iwaliner.urushi.Block.ReiryokuAltarBlock;
 import com.iwaliner.urushi.Block.WoodenCabinetryBlock;
 import com.iwaliner.urushi.Item.HasReiryokuItem;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.TileEntitiesRegister;
 import com.iwaliner.urushi.UrushiUtils;
 import net.minecraft.block.BlockState;

@@ -100,7 +100,7 @@ public class NormalKatanaItem extends TieredItem {
             for (LivingEntity entity : list) {
                 if(entity instanceof PlayerEntity) {
                 }else{
-                    entity.hurt(DamageSource.GENERIC, getDamage());
+                    entity.hurt(DamageSource.GENERIC, getDamage()/2);
                     player.level.playSound((PlayerEntity) null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.PLAYER_ATTACK_KNOCKBACK, SoundCategory.PLAYERS, 1.5F, 1F);
                 }
             }
@@ -110,7 +110,7 @@ public class NormalKatanaItem extends TieredItem {
 
     @Override
     public ActionResultType interactLivingEntity(ItemStack itemStack, PlayerEntity player, LivingEntity living, Hand hand) {
-        living.hurt(DamageSource.GENERIC,getDamage());
+        living.hurt(DamageSource.GENERIC,getDamage()/2);
         this.use(player.level,player,hand);
         player.level.playSound((PlayerEntity) null, living.getX(), living.getY(), living.getZ(), SoundEvents.PLAYER_ATTACK_KNOCKBACK, SoundCategory.PLAYERS, 1.5F, 1F);
         return ActionResultType.sidedSuccess(player.level.isClientSide);

@@ -5,6 +5,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.fluid.FluidState;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BambooLeaves;
@@ -22,10 +23,11 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.PlantType;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class JapaneseTimberBambooBlock extends Block implements net.minecraftforge.common.IPlantable, IGrowable {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
+    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
     public JapaneseTimberBambooBlock(AbstractBlock.Properties p_i48312_1_) {
@@ -42,21 +44,37 @@ public class JapaneseTimberBambooBlock extends Block implements net.minecraftfor
 
     }
 
-    public void randomTick(BlockState p_225542_1_, ServerWorld p_225542_2_, BlockPos p_225542_3_, Random random) {
-        if (p_225542_2_.isEmptyBlock(p_225542_3_.above())) {
+    public void randomTick(BlockState state, ServerWorld level, BlockPos pos, Random random) {
+        if (level.isEmptyBlock(pos.above())) {
             int i;
-            for(i = 1; p_225542_2_.getBlockState(p_225542_3_.below(i)).is(this); ++i) {
+            for(i = 1; level.getBlockState(pos.below(i)).is(this); ++i) {
             }
 
             if (i < ConfigUrushi.maxHightBamboo.get()) {
-                int j = p_225542_1_.getValue(AGE);
-                if (j >0) {
-                    p_225542_2_.setBlockAndUpdate(p_225542_3_.above(), this.defaultBlockState());
-                    p_225542_2_.setBlock(p_225542_3_, p_225542_1_.setValue(AGE, Integer.valueOf(0)), 4);
-                } else {
-                    p_225542_2_.setBlock(p_225542_3_, p_225542_1_.setValue(AGE, Integer.valueOf(j + 1)), 4);
-
+                int j = state.getValue(AGE);
+                if(state.getValue(AGE)==Integer.valueOf(3)){
+                    level.setBlockAndUpdate(pos, this.defaultBlockState().setValue(AGE,Integer.valueOf(0)));
                 }
+                if (j ==0||j ==1) {
+
+                    if(i<ConfigUrushi.maxHightBamboo.get()-6){
+                        level.setBlockAndUpdate(pos.above(), this.defaultBlockState().setValue(AGE,Integer.valueOf(0)));
+
+                    }else{
+                        if(random.nextInt(3)==0){
+                            level.setBlockAndUpdate(pos.above(), this.defaultBlockState().setValue(AGE,Integer.valueOf(1)));
+                        }else {
+                            if(j==0) {
+                                level.setBlockAndUpdate(pos.above(), this.defaultBlockState().setValue(AGE, Integer.valueOf(0)));
+                            }else{
+                                level.setBlockAndUpdate(pos.above(), this.defaultBlockState().setValue(AGE, Integer.valueOf(2)));
+
+                            }
+                        }
+                    }
+                }
+            }else if(state.getValue(AGE)!=Integer.valueOf(2)){
+                level.setBlockAndUpdate(pos, this.defaultBlockState().setValue(AGE, Integer.valueOf(2)));
             }
         }
 
@@ -92,6 +110,19 @@ public class JapaneseTimberBambooBlock extends Block implements net.minecraftfor
         p_206840_1_.add(AGE);
     }
 
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        if( context.getLevel().getBlockState(context.getClickedPos().below()).getBlock() instanceof JapaneseTimberBambooBlock){
+            if(context.getLevel().getBlockState(context.getClickedPos().below()).getValue(AGE)==Integer.valueOf(3)){
+                context.getLevel().setBlockAndUpdate(context.getClickedPos().below(), this.defaultBlockState());
+            }
+            return this.defaultBlockState();
+        }else{
+            return  this.defaultBlockState().setValue(AGE,Integer.valueOf(3));
+        }
+    }
+
     @Override
     public net.minecraftforge.common.PlantType getPlantType(IBlockReader world, BlockPos pos) {
         return PlantType.PLAINS;
@@ -125,8 +156,5 @@ public class JapaneseTimberBambooBlock extends Block implements net.minecraftfor
        Vector3d vector3d = p_220053_1_.getOffset(p_220053_2_, p_220053_3_);
         return SHAPE.move(vector3d.x, vector3d.y, vector3d.z);
     }
-    public VoxelShape getCollisionShape(BlockState p_220071_1_, IBlockReader p_220071_2_, BlockPos p_220071_3_, ISelectionContext p_220071_4_) {
-        Vector3d vector3d = p_220071_1_.getOffset(p_220071_2_, p_220071_3_);
-        return SHAPE.move(vector3d.x, vector3d.y, vector3d.z);
-    }
+
 }

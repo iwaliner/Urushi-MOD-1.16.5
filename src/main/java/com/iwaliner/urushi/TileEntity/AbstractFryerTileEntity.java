@@ -2,7 +2,7 @@ package com.iwaliner.urushi.TileEntity;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.ModCore_Urushi;
 import com.iwaliner.urushi.RecipeType.FryingRecipe;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -95,7 +95,7 @@ public abstract class AbstractFryerTileEntity extends LockableTileEntity impleme
     @Deprecated //Forge - get burn times by calling ForgeHooks#getBurnTime(ItemStack)
     public static Map<Item, Integer> getFuel() {
         Map<Item, Integer> map = Maps.newLinkedHashMap();
-        add(map, ItemsRegister.VegetableOil.get(), 1600);
+        add(map, ItemAndBlockRegister.VegetableOil.get(), 1600);
 
         return map;
     }
@@ -248,7 +248,7 @@ public abstract class AbstractFryerTileEntity extends LockableTileEntity impleme
             return 0;
         } else {
             Item item = itemStack.getItem();
-            return item==ItemsRegister.VegetableOil.get()?1600:0;
+            return item==ItemAndBlockRegister.VegetableOil.get()?1600:0;
         }
     }
 
@@ -341,7 +341,7 @@ public abstract class AbstractFryerTileEntity extends LockableTileEntity impleme
             return true;
         } else {
             ItemStack itemstack = this.items.get(1);
-            return p_94041_2_.getItem()==ItemsRegister.VegetableOil.get();
+            return p_94041_2_.getItem()==ItemAndBlockRegister.VegetableOil.get();
             //return true;
         }
     }

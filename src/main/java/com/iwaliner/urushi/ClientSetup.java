@@ -1,8 +1,6 @@
 package com.iwaliner.urushi;
 
-import com.iwaliner.urushi.Json.CubeAllBlockJsonMaker;
-import com.iwaliner.urushi.Json.GeneratedItemJsonMaker;
-import com.iwaliner.urushi.Json.NormalBlockItemJsonMaker;
+import com.iwaliner.urushi.Json.*;
 import com.iwaliner.urushi.Renderer.*;
 import com.iwaliner.urushi.Renderer.FoodRenderer.*;
 import com.iwaliner.urushi.Screen.DoubledWoodenCabinetryScreen;
@@ -37,20 +35,20 @@ public class ClientSetup {
 
         /**霊力で変化させるレシピを登録*/
         UrushiUtils.setItemBewitchRecipe(Items.SUGAR,Items.GLOWSTONE_DUST);
-        //UrushiUtils.setItemBewitchRecipe(Items.PAPER,ItemsRegister.blank_charm.get());
-        UrushiUtils.setItemBewitchRecipe(ItemsRegister.NormalKatanaTier10.get(),Items.DIAMOND);
+        //UrushiUtils.setItemBewitchRecipe(Items.PAPER,ItemAndBlockRegister.blank_charm.get());
+        UrushiUtils.setItemBewitchRecipe(ItemAndBlockRegister.NormalKatanaTier10.get(),Items.DIAMOND);
         UrushiUtils.setItemBewitchRecipe(Item.byBlock(Blocks.GOLD_BLOCK),Item.byBlock(Blocks.DIAMOND_BLOCK));
 
         UrushiUtils.setBewitchingTime(Items.SUGAR,60);
         UrushiUtils.setBewitchingTime(Items.PAPER,100);
-        UrushiUtils.setBewitchingTime(ItemsRegister.NormalKatanaTier10.get(),10);
+        UrushiUtils.setBewitchingTime(ItemAndBlockRegister.NormalKatanaTier10.get(),10);
         UrushiUtils.setBewitchingTime(Item.byBlock(Blocks.GOLD_BLOCK),200);
 
         UrushiUtils.setAltarVariant(Items.SUGAR,1);
         UrushiUtils.setAltarVariant(Items.GLOWSTONE_DUST,2);
         UrushiUtils.setAltarVariant(Items.PAPER,3);
-       // UrushiUtils.setAltarVariant(ItemsRegister.blank_charm.get(),4);
-        UrushiUtils.setAltarVariant(ItemsRegister.NormalKatanaTier10.get(),5);
+       // UrushiUtils.setAltarVariant(ItemAndBlockRegister.blank_charm.get(),4);
+        UrushiUtils.setAltarVariant(ItemAndBlockRegister.NormalKatanaTier10.get(),5);
         UrushiUtils.setAltarVariant(Items.DIAMOND,6);
         UrushiUtils.setAltarVariant(Items.GOLD_BLOCK,7);
         UrushiUtils.setAltarVariant(Items.DIAMOND_BLOCK,8);
@@ -63,16 +61,16 @@ public class ClientSetup {
 
 /**アイテムの状態を登録*/
         event.enqueueWork(() -> {
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier1.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier2.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier3.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier4.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier5.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier6.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier7.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier8.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier9.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
-            ItemModelsProperties.register(ItemsRegister.NormalKatanaTier10.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier1.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier2.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier3.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier4.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier5.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier6.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier7.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier8.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier9.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
+            ItemModelsProperties.register(ItemAndBlockRegister.NormalKatanaTier10.get(), new ResourceLocation(ModCore_Urushi.MOD_ID, "ishurting"), (itemStack, clientWorld, livingEntity) -> (livingEntity instanceof PlayerEntity &&livingEntity.swinging&&livingEntity.getMainHandItem()==itemStack)?1:0);
 
         });
 
@@ -125,29 +123,64 @@ public class ClientSetup {
 
 
             /**jsonファイルを自動生成*/
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.yokan.get(),"yokan");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.white_cushion.get(),"cushion_white");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.orange_cushion.get(),"cushion_orange");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.magenta_cushion.get(),"cushion_magenta");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.light_blue_cushion.get(),"cushion_light_blue");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.yellow_cushion.get(),"cushion_yellow");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.lime_cushion.get(),"cushion_lime");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.pink_cushion.get(),"cushion_pink");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.gray_cushion.get(),"cushion_gray");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.cyan_cushion.get(),"cushion_cyan");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.purple_cushion.get(),"cushion_purple");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.blue_cushion.get(),"cushion_blue");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.brown_cushion.get(),"cushion_brown");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.green_cushion.get(),"cushion_green");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.red_cushion.get(),"cushion_red");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.black_cushion.get(),"cushion_black");
-            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemsRegister.light_gray_cushion.get(),"cushion_silver");
-            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.RoughStone.get());
-            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(BlocksRegister.RoughStone.get(),"rough_stone");
-            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.salt_and_sand.get());
-            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(BlocksRegister.salt_and_sand.get(),"salt_sand");
-            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.udon.get());
-            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(ItemsRegister.dough.get());
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.yokan.get(),"yokan");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.white_cushion.get(),"cushion_white");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.orange_cushion.get(),"cushion_orange");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.magenta_cushion.get(),"cushion_magenta");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.light_blue_cushion.get(),"cushion_light_blue");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.yellow_cushion.get(),"cushion_yellow");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.lime_cushion.get(),"cushion_lime");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.pink_cushion.get(),"cushion_pink");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.gray_cushion.get(),"cushion_gray");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.cyan_cushion.get(),"cushion_cyan");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.purple_cushion.get(),"cushion_purple");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.blue_cushion.get(),"cushion_blue");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.brown_cushion.get(),"cushion_brown");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.green_cushion.get(),"cushion_green");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.red_cushion.get(),"cushion_red");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.black_cushion.get(),"cushion_black");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.light_gray_cushion.get(),"cushion_silver");
+            GeneratedItemJsonMaker.INSTANCE.registerItemModel(ItemAndBlockRegister.japanese_cedar_bark.get(),"japanese_cedar_bark");
+
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(ItemAndBlockRegister.RoughStone.get(),"rough_stone");
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(ItemAndBlockRegister.salt_and_sand.get(),"salt_sand");
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(ItemAndBlockRegister.smooth_japanese_cedar_planks.get(),"planks_smooth_japanese_cedar");
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(ItemAndBlockRegister.japanese_cedar_planks.get(),"japanese_cedar_planks");
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.japanese_cedar_planks.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.smooth_japanese_cedar_planks.get()));
+            SlabBlockJsonMaker.INSTANCE.registerSlabBlockModel(ItemAndBlockRegister.japanese_cedar_slab.get(),"half_slab_japanese_cedar",ItemAndBlockRegister.japanese_cedar_planks.get(),"upper_slab_japanese_cedar","japanese_cedar_planks");
+            SlabBlockJsonMaker.INSTANCE.registerSlabBlockModel(ItemAndBlockRegister.smooth_japanese_cedar_slab.get(),"half_slab_smooth_japanese_cedar",ItemAndBlockRegister.smooth_japanese_cedar_planks.get(),"upper_slab_smooth_japanese_cedar","planks_smooth_japanese_cedar");
+            StairBlockJsonMaker.INSTANCE.registerStairsBlockModel("japanese_cedar","japanese_cedar_planks");
+            StairBlockJsonMaker.INSTANCE.registerStairsBlockModel("smooth_japanese_cedar","planks_smooth_japanese_cedar");
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.japanese_cedar_log.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.japanese_cedar_wood.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.stripped_japanese_cedar_log.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.stripped_japanese_cedar_wood.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.red_leaves.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.orange_leaves.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.yellow_leaves.get()));
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(ItemAndBlockRegister.red_leaves.get(),"red_leaves");
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(ItemAndBlockRegister.orange_leaves.get(),"orange_leaves");
+            CubeAllBlockJsonMaker.INSTANCE.registerBlockModel(ItemAndBlockRegister.yellow_leaves.get(),"yellow_leaves");
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.spruce_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.birch_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.jungle_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.acacia_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.dark_oak_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.japanese_apricot_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.sakura_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.cypress_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.japanese_cedar_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.red_urushi_board_window.get()));
+            NormalBlockItemJsonMaker.INSTANCE.registerBlockModel(Item.byBlock(ItemAndBlockRegister.black_urushi_board_window.get()));
+
+
+
+
+
+
+
+
 
         }
 

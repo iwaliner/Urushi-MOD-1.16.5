@@ -1,6 +1,6 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.TileEntity.ReiryokuAltarTileEntity;
 import com.iwaliner.urushi.TileEntity.RiceCauldronTileEntity;
 import com.iwaliner.urushi.UrushiUtils;
@@ -70,8 +70,8 @@ public class RiceCauldronBlock extends ContainerBlock {
                    world.playSound((PlayerEntity) null,pos,SoundEvents.BARREL_CLOSE,SoundCategory.BLOCKS,1F,1F);
                    return ActionResultType.SUCCESS;
                }else if(state.getValue(VARIANT)==1){
-                   if(player.getItemInHand(hand).getItem()== ItemsRegister.RawRice.get()){
-                       tileEntity.setItem(0, new ItemStack(ItemsRegister.Rice.get(),player.getItemInHand(hand).getCount()));
+                   if(player.getItemInHand(hand).getItem()== ItemAndBlockRegister.RawRice.get()){
+                       tileEntity.setItem(0, new ItemStack(ItemAndBlockRegister.Rice.get(),player.getItemInHand(hand).getCount()));
                        player.setItemInHand(hand,ItemStack.EMPTY);
                        world.playSound((PlayerEntity) null,pos, SoundEvents.ITEM_PICKUP, SoundCategory.BLOCKS,1F,1F);
                        //world.setBlockAndUpdate(pos,this.defaultBlockState().setValue(VARIANT,Integer.valueOf(2)));

@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 import com.iwaliner.urushi.ConfigUrushi;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.ModCore_Urushi;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.item.Item;

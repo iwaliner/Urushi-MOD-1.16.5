@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.16.5-3.13'
+version = '1.16.5-3.15'
 group = 'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Urushi'
 
@@ -141,6 +141,8 @@ implementation  fg.deobf("curse.maven:jei-238222:3681294")
 implementation  fg.deobf("curse.maven:just-enough-resources-jer-240630:3435305")
 implementation  fg.deobf("curse.maven:ichunutil-229060:3803605")
 implementation  fg.deobf("curse.maven:tabula-minecraft-modeler-229092:3548425")
+//implementation  fg.deobf("curse.maven:charm-reforged-430988:3214651")
+implementation  fg.deobf("curse.maven:corail-woodcutter-331983:3790469")
 
 
 }

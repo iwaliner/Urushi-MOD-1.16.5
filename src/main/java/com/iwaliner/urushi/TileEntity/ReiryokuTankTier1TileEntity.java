@@ -2,7 +2,7 @@ package com.iwaliner.urushi.TileEntity;
 
 import com.iwaliner.urushi.Block.AbstractHasReiryokuBlock;
 import com.iwaliner.urushi.Block.ReiryokuPipeBlock;
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.TileEntitiesRegister;
 import com.iwaliner.urushi.UrushiUtils;
 import net.minecraft.block.BlockState;

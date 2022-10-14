@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Slot;
 
 import com.iwaliner.urushi.Container.AbstractFryerContainer;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -16,7 +16,7 @@ public class FryerFuelSlot extends Slot {
     }
 
     public boolean mayPlace(ItemStack itemStack) {
-        return itemStack.getItem()== ItemsRegister.VegetableOil.get();
+        return itemStack.getItem()== ItemAndBlockRegister.VegetableOil.get();
     }
 
     public int getMaxStackSize(ItemStack p_178170_1_) {

@@ -1,6 +1,6 @@
 package com.iwaliner.urushi.World;
 
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.ConfigUrushi;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -24,9 +24,9 @@ public class OreGen {
 
     public static void addOres(BiomeLoadingEvent event) {
         if (ConfigUrushi.genCopperOre.get()) {
-            addOre(event, OreFeatureConfig.FillerBlockType.NATURAL_STONE, ((Block) BlocksRegister.CopperOre.get()).defaultBlockState(), 9, 0, 80, 15);
+            addOre(event, OreFeatureConfig.FillerBlockType.NATURAL_STONE, ((Block) ItemAndBlockRegister.CopperOre.get()).defaultBlockState(), 9, 0, 80, 15);
         }
-        addOreSand(event, NATURAL_SAND, ((Block) BlocksRegister.Ironsand.get()).defaultBlockState(), 4, 0, 120, 30);
+        addOreSand(event, NATURAL_SAND, ((Block) ItemAndBlockRegister.IronsandOre.get()).defaultBlockState(), 4, 0, 120, 30);
 
     }
     public static void addOre(BiomeLoadingEvent event, RuleTest rule, BlockState state, int veinSize, int minHeight, int maxHeight, int amount) {

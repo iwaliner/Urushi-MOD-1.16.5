@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Entity;
 
 import com.iwaliner.urushi.EntityRegister;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
 import net.minecraft.item.ItemStack;
@@ -15,7 +15,7 @@ public class GoldfishEntity extends AbstractGroupFishEntity {
         super(EntityRegister.GoldfishEntity.get(), p_i50246_2_);
     }
     protected ItemStack getBucketItemStack() {
-        return new ItemStack(ItemsRegister.GoldfishBucket.get());
+        return new ItemStack(ItemAndBlockRegister.GoldfishBucket.get());
     }
     public int getMaxSchoolSize() {
         return 5;

@@ -1,6 +1,6 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -49,14 +49,14 @@ public class ChiseledLacquerLogBlock extends HorizontalBlock {
            } else if (state.getValue(FACING) == Direction.EAST) {
                offsetPos = pos.east();
            }
-           double d0 = (double) offsetPos.getX() +random.nextInt(16)*0.1D;
-           double d1 = (double) offsetPos.getY() +random.nextInt(8)*0.1D;
-           double d2 = (double) offsetPos.getZ() +random.nextInt(16)*0.1D;
+           double d0 = (double) offsetPos.getX() +random.nextInt(10);
+           double d1 = (double) offsetPos.getY() +random.nextInt(8);
+           double d2 = (double) offsetPos.getZ() +random.nextInt(10);
            world.addParticle(ParticleTypes.FALLING_HONEY, d0, d1, d2, 0.0D, 0D, 0.0D);
 
     }
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-       if(BlocksRegister.RawUrushiLayer.isPresent()) {
+       if(ItemAndBlockRegister.RawUrushiLayer.isPresent()) {
            BlockPos offsetPos = pos;
            if (state.getValue(FACING) == Direction.NORTH) {
                offsetPos = pos.north();
@@ -69,8 +69,8 @@ public class ChiseledLacquerLogBlock extends HorizontalBlock {
            }
 
            for (int i = 1; i < 255; ++i) {
-               if (!world.isEmptyBlock(offsetPos.below(i))&&world.getBlockState(offsetPos.below(i)).getBlock()!= BlocksRegister.RawUrushiLayer.get()) {
-                   world.setBlockAndUpdate(offsetPos.below(i - 1), BlocksRegister.RawUrushiLayer.get().defaultBlockState());
+               if (!world.isEmptyBlock(offsetPos.below(i))&&world.getBlockState(offsetPos.below(i)).getBlock()!= ItemAndBlockRegister.RawUrushiLayer.get()) {
+                   world.setBlockAndUpdate(offsetPos.below(i - 1), ItemAndBlockRegister.RawUrushiLayer.get().defaultBlockState());
                    break;
                } else {
                    continue;

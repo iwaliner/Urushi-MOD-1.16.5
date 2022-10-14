@@ -1,6 +1,6 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FarmlandBlock;
@@ -25,7 +25,7 @@ public class AzukiCropBlock extends CropsBlock {
     }
 
     protected IItemProvider getBaseSeedId() {
-        return ItemsRegister.AzukiCrop.get();
+        return ItemAndBlockRegister.AzukiCrop.get();
     }
     protected boolean mayPlaceOn(BlockState p_200014_1_, IBlockReader p_200014_2_, BlockPos p_200014_3_) {
         return p_200014_1_.getBlock() instanceof FarmlandBlock;

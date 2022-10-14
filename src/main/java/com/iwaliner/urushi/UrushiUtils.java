@@ -47,20 +47,6 @@ public class UrushiUtils {
             default:    return 6;
         }
     }
-    public static EntityType<?> getEntityTypeFromFoodItem(Item item){
-        if(item==ItemsRegister.Rice.get()){
-            return EntityRegister.RiceFoodEntity.get();
-        }else if(item==ItemsRegister.sekihan.get()){
-            return EntityRegister.SekihanFoodEntity.get();
-        }else if(item==ItemsRegister.TKG.get()){
-            return EntityRegister.TKGFoodEntity.get();
-        }else if(item==ItemsRegister.Gyudon.get()){
-            return EntityRegister.GyudonFoodEntity.get();
-        }else if(item==ItemsRegister.Butadon.get()){
-            return EntityRegister.ButadonFoodEntity.get();
-        }
-        return EntityRegister.RiceFoodEntity.get();
-    }
     public static boolean isBewitchable(Item item){
         if(bewitchableMap.containsKey(item)||item instanceof HasReiryokuItem){
             return true;

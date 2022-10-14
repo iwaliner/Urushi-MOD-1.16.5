@@ -1,6 +1,6 @@
 package com.iwaliner.urushi.World;
 
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.mojang.serialization.Codec;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ISeedReader;
@@ -19,7 +19,7 @@ public class WorldGenBamboo extends Feature<ProbabilityConfig> {
     public boolean place(ISeedReader iSeedReader, ChunkGenerator chunkGenerator, Random random, BlockPos pos, ProbabilityConfig probabilityConfig) {
 
         for(int i1 = 0; i1 <20; ++i1) {
-            iSeedReader.setBlock(pos.above(i1), BlocksRegister.JapaneseTimberBamboo.get().defaultBlockState(), 4);
+            iSeedReader.setBlock(pos.above(i1), ItemAndBlockRegister.JapaneseTimberBamboo.get().defaultBlockState(), 4);
         }
 
         return true;

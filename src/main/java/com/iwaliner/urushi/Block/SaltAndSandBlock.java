@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.BlocksRegister;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FallingBlock;
@@ -32,7 +32,7 @@ public class SaltAndSandBlock extends FallingBlock {
 
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
-        ItemEntity entity = new ItemEntity(world,pos.getX()+0.5D, pos.getY()+1.5D, pos.getZ()+0.5D, new ItemStack(ItemsRegister.salt.get()));
+        ItemEntity entity = new ItemEntity(world,pos.getX()+0.5D, pos.getY()+1.5D, pos.getZ()+0.5D, new ItemStack(ItemAndBlockRegister.salt.get()));
         world.addFreshEntity(entity);
         world.setBlock(pos, Blocks.SAND.defaultBlockState(),2);
         world.playSound((PlayerEntity) null,pos, SoundEvents.SAND_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);

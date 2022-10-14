@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Item;
 
 import com.iwaliner.urushi.Block.*;
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.UrushiUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -36,7 +36,7 @@ public class NoodleKnifeItem extends Item {
         ItemStack itemstack = context.getItemInHand();
         playerentity.startUsingItem(context.getHand());
         if(context.getLevel().getBlockState(context.getClickedPos()).getBlock() instanceof DoughBlock){
-            context.getLevel().setBlock(context.getClickedPos(), BlocksRegister.udon.get().defaultBlockState().setValue(HorizonalRotateBlock.FACING,context.getLevel().getBlockState(context.getClickedPos()).getValue(HorizonalRotateBlock.FACING)),2);
+            context.getLevel().setBlock(context.getClickedPos(), ItemAndBlockRegister.udon.get().defaultBlockState().setValue(HorizonalRotateBlock.FACING,context.getLevel().getBlockState(context.getClickedPos()).getValue(HorizonalRotateBlock.FACING)),2);
                itemstack.hurtAndBreak(1, playerentity, (x) -> {
                         x.broadcastBreakEvent(context.getHand());
                     });

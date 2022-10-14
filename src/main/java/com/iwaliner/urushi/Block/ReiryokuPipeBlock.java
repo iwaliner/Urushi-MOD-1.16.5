@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Block;
 
 import com.google.common.collect.Maps;
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.TileEntity.ReiryokuPipeTileEntity;
 import com.iwaliner.urushi.TileEntity.RiceHokoraTileEntity;
 import com.iwaliner.urushi.UrushiUtils;

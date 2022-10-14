@@ -10,6 +10,6 @@ public class TabUrushi extends ItemGroup {
 
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(BlocksRegister.SakuraBigSapling.get());
+        return new ItemStack(ItemAndBlockRegister.SakuraBigSapling.get());
     }
 }

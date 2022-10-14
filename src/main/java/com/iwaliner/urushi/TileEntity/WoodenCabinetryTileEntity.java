@@ -3,7 +3,7 @@ package com.iwaliner.urushi.TileEntity;
 
 import com.iwaliner.urushi.Block.WoodenCabinetryBlock;
 import com.iwaliner.urushi.Block.WoodenCabinetrySlabBlock;
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.TileEntitiesRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

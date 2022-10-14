@@ -3,7 +3,7 @@ package com.iwaliner.urushi.RecipeType;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.ModCore_Urushi;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -67,7 +67,7 @@ public class FryingRecipe implements IFryingRecipe {
 
     @Override
     public ItemStack getToastSymbol() {
-        return new ItemStack(ItemsRegister.Fryer.get());
+        return new ItemStack(ItemAndBlockRegister.Fryer.get());
     }
 
     public static class FryingRecipeType implements IRecipeType<FryingRecipe> {

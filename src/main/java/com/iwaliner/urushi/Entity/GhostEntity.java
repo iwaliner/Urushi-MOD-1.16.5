@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Entity;
 
 import com.iwaliner.urushi.EntityRegister;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.fish.SalmonEntity;

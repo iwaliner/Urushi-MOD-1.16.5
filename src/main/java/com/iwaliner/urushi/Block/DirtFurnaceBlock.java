@@ -1,11 +1,14 @@
 package com.iwaliner.urushi.Block;
 
+import com.iwaliner.urushi.ItemAndBlockRegister;
+import com.iwaliner.urushi.TagUrushi;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FlintAndSteelItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -47,19 +50,31 @@ public class DirtFurnaceBlock extends HorizonalRotateBlock {
     }
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
-         if(state.getValue(LIT)){
-             world.setBlockAndUpdate(pos,state.setValue(LIT,Boolean.valueOf(false)));
-             world.playSound((PlayerEntity) null, pos, SoundEvents.FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1F);
-             return ActionResultType.SUCCESS;
-         }else{
-             if(player.getItemInHand(hand).getItem() instanceof FlintAndSteelItem){
-                 world.playSound((PlayerEntity) null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.4F + 0.8F);
-                 world.setBlockAndUpdate(pos,state.setValue(LIT,Boolean.valueOf(true)));
-                 return ActionResultType.SUCCESS;
-             }else{
-                 return ActionResultType.FAIL;
-             }
-         }
+        ItemStack item=player.getItemInHand(hand);
+        if(state.getValue(LIT)&&player.getItemInHand(hand).getItem()!= Item.byBlock(ItemAndBlockRegister.rice_cauldron.get())){
+            world.setBlockAndUpdate(pos,state.setValue(LIT,Boolean.valueOf(false)));
+            world.playSound((PlayerEntity) null, pos, SoundEvents.FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1F);
+            return ActionResultType.SUCCESS;
+        }else{
+            if(item.getItem().is(TagUrushi.DIRT_FURNACE_IGNITE)) {
+                if (item.getItem() instanceof FlintAndSteelItem) {
+                    world.playSound((PlayerEntity) null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.4F + 0.8F);
+                    world.setBlockAndUpdate(pos, state.setValue(LIT, Boolean.valueOf(true)));
+                    return ActionResultType.SUCCESS;
+                }else if(item.getMaxStackSize()==64) {
+                    world.playSound((PlayerEntity) null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.4F + 0.8F);
+                    world.setBlockAndUpdate(pos, state.setValue(LIT, Boolean.valueOf(true)));
+                    item.shrink(1);
+                    return ActionResultType.SUCCESS;
+                } else {
+                    world.playSound((PlayerEntity) null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.4F + 0.8F);
+                    world.setBlockAndUpdate(pos, state.setValue(LIT, Boolean.valueOf(true)));
+                    return ActionResultType.SUCCESS;
+                }
+            }else{
+                return ActionResultType.FAIL;
+            }
+        }
     }
 
     @Override

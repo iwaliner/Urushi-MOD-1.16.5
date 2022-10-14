@@ -9,13 +9,24 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
 public class BarsBlock extends HorizonalRotateBlock{
-    protected static final VoxelShape SHAPEA = Block.box(7.0D, 0.0D, 0D, 9.0D, 16.0D, 16.0D);
-    protected static final VoxelShape SHAPEB = Block.box(0D, 0.0D, 7D, 16D, 16.0D, 9.0D);
+    protected static final VoxelShape SHAPEAA = Block.box(7.0D, 0.0D, 0D, 9.0D, 16.0D, 16.0D);
+    protected static final VoxelShape SHAPEBB = Block.box(0D, 0.0D, 7D, 16D, 16.0D, 9.0D);
+    protected static final VoxelShape SHAPEA = Block.box(7.0D, 0.0D, 0D, 9.0D, 24.0D, 16.0D);
+    protected static final VoxelShape SHAPEB = Block.box(0D, 0.0D, 7D, 16D, 24.0D, 9.0D);
 
     public BarsBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);
     }
     public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+        if(state.getValue(FACING)== Direction.NORTH||state.getValue(FACING)==Direction.SOUTH){
+            return SHAPEBB;
+        }else{
+            return SHAPEAA;
+        }
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, IBlockReader p_220071_2_, BlockPos p_220071_3_, ISelectionContext p_220071_4_) {
         if(state.getValue(FACING)== Direction.NORTH||state.getValue(FACING)==Direction.SOUTH){
             return SHAPEB;
         }else{

@@ -19,10 +19,10 @@ import net.minecraft.world.server.ServerWorld;
 
 public class PlaceableFoodItem extends Item {
 
-
-    public PlaceableFoodItem( Properties p_i48487_1_) {
+    java.util.function.Supplier<? extends EntityType<?>> entityType;
+    public PlaceableFoodItem(java.util.function.Supplier<? extends EntityType<?>> e, Properties p_i48487_1_) {
         super(p_i48487_1_);
-
+        entityType=e;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class PlaceableFoodItem extends Item {
         if(!context.getPlayer().isSuppressingBounce()){
             return ActionResultType.PASS;
         }
-        EntityType<?> entity= UrushiUtils.getEntityTypeFromFoodItem(this.getItem());
+        EntityType<?> entity=entityType.get();
 
         if (!(context.getLevel() instanceof ServerWorld)) {
             return ActionResultType.SUCCESS;

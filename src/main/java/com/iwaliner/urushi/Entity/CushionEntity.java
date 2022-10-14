@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Entity;
 
 import com.iwaliner.urushi.EntityRegister;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
@@ -78,37 +78,37 @@ public class CushionEntity extends Entity {
         switch(this.getCushionType()) {
             case WHITE:
             default:
-                return ItemsRegister.white_cushion.get();
+                return ItemAndBlockRegister.white_cushion.get();
             case ORANGE:
-                return ItemsRegister.orange_cushion.get();
+                return ItemAndBlockRegister.orange_cushion.get();
             case MAGENTA:
-                return ItemsRegister.magenta_cushion.get();
+                return ItemAndBlockRegister.magenta_cushion.get();
             case LIGHT_BLUE:
-                return ItemsRegister.light_blue_cushion.get();
+                return ItemAndBlockRegister.light_blue_cushion.get();
             case YELLOW:
-                return ItemsRegister.yellow_cushion.get();
+                return ItemAndBlockRegister.yellow_cushion.get();
             case LIME:
-                return ItemsRegister.lime_cushion.get();
+                return ItemAndBlockRegister.lime_cushion.get();
             case PINK:
-                return ItemsRegister.pink_cushion.get();
+                return ItemAndBlockRegister.pink_cushion.get();
             case GRAY:
-                return ItemsRegister.gray_cushion.get();
+                return ItemAndBlockRegister.gray_cushion.get();
             case LIGHT_GRAY:
-                return ItemsRegister.light_gray_cushion.get();
+                return ItemAndBlockRegister.light_gray_cushion.get();
             case CYAN:
-                return ItemsRegister.cyan_cushion.get();
+                return ItemAndBlockRegister.cyan_cushion.get();
             case PURPLE:
-                return ItemsRegister.purple_cushion.get();
+                return ItemAndBlockRegister.purple_cushion.get();
             case BLUE:
-                return ItemsRegister.blue_cushion.get();
+                return ItemAndBlockRegister.blue_cushion.get();
             case BROWN:
-                return ItemsRegister.brown_cushion.get();
+                return ItemAndBlockRegister.brown_cushion.get();
             case GREEN:
-                return ItemsRegister.green_cushion.get();
+                return ItemAndBlockRegister.green_cushion.get();
             case RED:
-                return ItemsRegister.red_cushion.get();
+                return ItemAndBlockRegister.red_cushion.get();
             case BLACK:
-                return ItemsRegister.black_cushion.get();
+                return ItemAndBlockRegister.black_cushion.get();
         }
     }
 

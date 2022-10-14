@@ -1,7 +1,7 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.BlocksRegister;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import it.unimi.dsi.fastutil.objects.Object2FloatMap;
 import it.unimi.dsi.fastutil.objects.Object2FloatOpenHashMap;
 import net.minecraft.block.AbstractBlock;
@@ -119,7 +119,7 @@ public class OilExtractorBlock extends Block implements ISidedInventoryProvider 
             double d0 = (double)(p_235489_1_.random.nextFloat() * 0.7F) + (double)0.15F;
             double d1 = (double)(p_235489_1_.random.nextFloat() * 0.7F) + (double)0.060000002F + 0.6D;
             double d2 = (double)(p_235489_1_.random.nextFloat() * 0.7F) + (double)0.15F;
-            ItemEntity itementity = new ItemEntity(p_235489_1_, (double)p_235489_2_.getX() + d0, (double)p_235489_2_.getY() + d1, (double)p_235489_2_.getZ() + d2, new ItemStack(ItemsRegister.VegetableOil.get()));
+            ItemEntity itementity = new ItemEntity(p_235489_1_, (double)p_235489_2_.getX() + d0, (double)p_235489_2_.getY() + d1, (double)p_235489_2_.getZ() + d2, new ItemStack(ItemAndBlockRegister.VegetableOil.get()));
             itementity.setDefaultPickUpDelay();
             p_235489_1_.addFreshEntity(itementity);
         }
@@ -210,7 +210,7 @@ public class OilExtractorBlock extends Block implements ISidedInventoryProvider 
         private boolean changed;
 
         public FullInventory(BlockState p_i50463_1_, IWorld p_i50463_2_, BlockPos p_i50463_3_) {
-            super(new ItemStack(ItemsRegister.VegetableOil.get()));
+            super(new ItemStack(ItemAndBlockRegister.VegetableOil.get()));
             this.state = p_i50463_1_;
             this.level = p_i50463_2_;
             this.pos = p_i50463_3_;
@@ -229,7 +229,7 @@ public class OilExtractorBlock extends Block implements ISidedInventoryProvider 
         }
 
         public boolean canTakeItemThroughFace(int p_180461_1_, ItemStack p_180461_2_, Direction p_180461_3_) {
-            return !this.changed && p_180461_3_ == Direction.DOWN && p_180461_2_.getItem() == ItemsRegister.VegetableOil.get();
+            return !this.changed && p_180461_3_ == Direction.DOWN && p_180461_2_.getItem() == ItemAndBlockRegister.VegetableOil.get();
         }
 
         public void setChanged() {

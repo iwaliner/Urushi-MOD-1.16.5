@@ -1,6 +1,6 @@
 package com.iwaliner.urushi.Block;
 
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RotatedPillarBlock;
@@ -24,8 +24,8 @@ public class StrippableLogBlock extends RotatedPillarBlock {
         super(p_i48339_1_);
         block=b;
      /*   if(i==0){
-            if(ItemsRegister.JapaneseApricotBark.isPresent())
-            item= ItemsRegister.JapaneseApricotBark.get();
+            if(ItemAndBlockRegister.JapaneseApricotBark.isPresent())
+            item= ItemAndBlockRegister.JapaneseApricotBark.get();
         }*/
         type=i;
     }
@@ -33,12 +33,14 @@ public class StrippableLogBlock extends RotatedPillarBlock {
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
         Item item=null;
-        if(ItemsRegister.JapaneseApricotBark.isPresent()&&type==0){
-            item= ItemsRegister.JapaneseApricotBark.get();
-        }else if(ItemsRegister.SakuraBark.isPresent()&&type==1){
-            item= ItemsRegister.SakuraBark.get();
-        }else if(ItemsRegister.CypressBark.isPresent()&&type==2){
-            item= ItemsRegister.CypressBark.get();
+        if(ItemAndBlockRegister.JapaneseApricotBark.isPresent()&&type==0){
+            item= ItemAndBlockRegister.JapaneseApricotBark.get();
+        }else if(ItemAndBlockRegister.SakuraBark.isPresent()&&type==1){
+            item= ItemAndBlockRegister.SakuraBark.get();
+        }else if(ItemAndBlockRegister.CypressBark.isPresent()&&type==2){
+            item= ItemAndBlockRegister.CypressBark.get();
+        }else if(ItemAndBlockRegister.japanese_cedar_bark.isPresent()&&type==3){
+            item= ItemAndBlockRegister.japanese_cedar_bark.get();
         }
 
         if(player.getItemInHand(hand).getItem() instanceof AxeItem){

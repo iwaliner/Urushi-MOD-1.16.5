@@ -2,7 +2,7 @@ package com.iwaliner.urushi.TileEntity;
 
 import com.iwaliner.urushi.Block.AbstractHasReiryokuBlock;
 import com.iwaliner.urushi.Block.ReiryokuPipeBlock;
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.TileEntitiesRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -64,18 +64,18 @@ public class RiceHokoraTileEntity extends AbstractHasRiryokuTileEntity implement
         BlockState state=level.getBlockState(worldPosition);
         int amountPer1=300;
         if(reiryokuStored<=getMaxReiryoku()-amountPer1) {
-            if (level.getBlockState(pos.offset(1, 0, 0)).getBlock() == BlocksRegister.Tawara.get() && coolTimeA < debugCoolTimeAmount) {
+            if (level.getBlockState(pos.offset(1, 0, 0)).getBlock() == ItemAndBlockRegister.Tawara.get() && coolTimeA < debugCoolTimeAmount) {
                 coolTimeA++;
-            } else if (level.getBlockState(pos.offset(1, 0, 0)).getBlock() == BlocksRegister.Tawara.get()) {
+            } else if (level.getBlockState(pos.offset(1, 0, 0)).getBlock() == ItemAndBlockRegister.Tawara.get()) {
                 coolTimeA = 0;
                 reiryokuStored += amountPer1;
                 level.playSound((PlayerEntity) null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
                 if (!level.isClientSide()) level.setBlockAndUpdate(pos.offset(1, 0, 0), Blocks.AIR.defaultBlockState());
             }
 
-            if (level.getBlockState(pos.offset(-1, 0, 0)).getBlock() == BlocksRegister.Tawara.get() && coolTimeB < debugCoolTimeAmount) {
+            if (level.getBlockState(pos.offset(-1, 0, 0)).getBlock() == ItemAndBlockRegister.Tawara.get() && coolTimeB < debugCoolTimeAmount) {
                 coolTimeB++;
-            } else if (level.getBlockState(pos.offset(-1, 0, 0)).getBlock() == BlocksRegister.Tawara.get()) {
+            } else if (level.getBlockState(pos.offset(-1, 0, 0)).getBlock() == ItemAndBlockRegister.Tawara.get()) {
                 coolTimeB = 0;
                 reiryokuStored += amountPer1;
                 level.playSound((PlayerEntity) null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
@@ -83,18 +83,18 @@ public class RiceHokoraTileEntity extends AbstractHasRiryokuTileEntity implement
                     level.setBlockAndUpdate(pos.offset(-1, 0, 0), Blocks.AIR.defaultBlockState());
             }
 
-            if (level.getBlockState(pos.offset(0, 0, 1)).getBlock() == BlocksRegister.Tawara.get() && coolTimeC < debugCoolTimeAmount) {
+            if (level.getBlockState(pos.offset(0, 0, 1)).getBlock() == ItemAndBlockRegister.Tawara.get() && coolTimeC < debugCoolTimeAmount) {
                 coolTimeC++;
-            } else if (level.getBlockState(pos.offset(0, 0, 1)).getBlock() == BlocksRegister.Tawara.get()) {
+            } else if (level.getBlockState(pos.offset(0, 0, 1)).getBlock() == ItemAndBlockRegister.Tawara.get()) {
                 coolTimeC = 0;
                 reiryokuStored += amountPer1;
                 level.playSound((PlayerEntity) null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
                 if (!level.isClientSide()) level.setBlockAndUpdate(pos.offset(0, 0, 1), Blocks.AIR.defaultBlockState());
             }
 
-            if (level.getBlockState(pos.offset(0, 0, -1)).getBlock() == BlocksRegister.Tawara.get() && coolTimeD < debugCoolTimeAmount) {
+            if (level.getBlockState(pos.offset(0, 0, -1)).getBlock() == ItemAndBlockRegister.Tawara.get() && coolTimeD < debugCoolTimeAmount) {
                 coolTimeD++;
-            } else if (level.getBlockState(pos.offset(0, 0, -1)).getBlock() == BlocksRegister.Tawara.get()) {
+            } else if (level.getBlockState(pos.offset(0, 0, -1)).getBlock() == ItemAndBlockRegister.Tawara.get()) {
                 coolTimeD = 0;
                 reiryokuStored += amountPer1;
                 level.playSound((PlayerEntity) null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
@@ -102,18 +102,18 @@ public class RiceHokoraTileEntity extends AbstractHasRiryokuTileEntity implement
                     level.setBlockAndUpdate(pos.offset(0, 0, -1), Blocks.AIR.defaultBlockState());
             }
 
-            if (level.getBlockState(pos.offset(1, 0, 1)).getBlock() == BlocksRegister.Tawara.get() && coolTimeE < debugCoolTimeAmount) {
+            if (level.getBlockState(pos.offset(1, 0, 1)).getBlock() == ItemAndBlockRegister.Tawara.get() && coolTimeE < debugCoolTimeAmount) {
                 coolTimeE++;
-            } else if (level.getBlockState(pos.offset(1, 0, 1)).getBlock() == BlocksRegister.Tawara.get()) {
+            } else if (level.getBlockState(pos.offset(1, 0, 1)).getBlock() == ItemAndBlockRegister.Tawara.get()) {
                 coolTimeE = 0;
                 reiryokuStored += amountPer1;
                 level.playSound((PlayerEntity) null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
                 if (!level.isClientSide()) level.setBlockAndUpdate(pos.offset(1, 0, 1), Blocks.AIR.defaultBlockState());
             }
 
-            if (level.getBlockState(pos.offset(1, 0, -1)).getBlock() == BlocksRegister.Tawara.get() && coolTimeF < debugCoolTimeAmount) {
+            if (level.getBlockState(pos.offset(1, 0, -1)).getBlock() == ItemAndBlockRegister.Tawara.get() && coolTimeF < debugCoolTimeAmount) {
                 coolTimeF++;
-            } else if (level.getBlockState(pos.offset(1, 0, -1)).getBlock() == BlocksRegister.Tawara.get()) {
+            } else if (level.getBlockState(pos.offset(1, 0, -1)).getBlock() == ItemAndBlockRegister.Tawara.get()) {
                 coolTimeF = 0;
                 reiryokuStored += amountPer1;
                 level.playSound((PlayerEntity) null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
@@ -121,9 +121,9 @@ public class RiceHokoraTileEntity extends AbstractHasRiryokuTileEntity implement
                     level.setBlockAndUpdate(pos.offset(1, 0, -1), Blocks.AIR.defaultBlockState());
             }
 
-            if (level.getBlockState(pos.offset(-1, 0, 1)).getBlock() == BlocksRegister.Tawara.get() && coolTimeG < debugCoolTimeAmount) {
+            if (level.getBlockState(pos.offset(-1, 0, 1)).getBlock() == ItemAndBlockRegister.Tawara.get() && coolTimeG < debugCoolTimeAmount) {
                 coolTimeG++;
-            } else if (level.getBlockState(pos.offset(-1, 0, 1)).getBlock() == BlocksRegister.Tawara.get()) {
+            } else if (level.getBlockState(pos.offset(-1, 0, 1)).getBlock() == ItemAndBlockRegister.Tawara.get()) {
                 coolTimeG = 0;
                 reiryokuStored += amountPer1;
                 level.playSound((PlayerEntity) null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);
@@ -131,9 +131,9 @@ public class RiceHokoraTileEntity extends AbstractHasRiryokuTileEntity implement
                     level.setBlockAndUpdate(pos.offset(-1, 0, 1), Blocks.AIR.defaultBlockState());
             }
 
-            if (level.getBlockState(pos.offset(-1, 0, -1)).getBlock() == BlocksRegister.Tawara.get() && coolTimeH < debugCoolTimeAmount) {
+            if (level.getBlockState(pos.offset(-1, 0, -1)).getBlock() == ItemAndBlockRegister.Tawara.get() && coolTimeH < debugCoolTimeAmount) {
                 coolTimeH++;
-            } else if (level.getBlockState(pos.offset(-1, 0, -1)).getBlock() == BlocksRegister.Tawara.get()) {
+            } else if (level.getBlockState(pos.offset(-1, 0, -1)).getBlock() == ItemAndBlockRegister.Tawara.get()) {
                 coolTimeH = 0;
                 reiryokuStored += amountPer1;
                 level.playSound((PlayerEntity) null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1F);

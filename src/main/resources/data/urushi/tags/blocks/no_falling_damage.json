@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "urushi:thatched_block",
+    "urushi:thatched_slab",
+    "urushi:thatched_stairs",
+    "urushi:thatched_roof_45",
+    "urushi:thatched_roof_225",
+    "urushi:hiwadabuki_block",
+    "urushi:hiwadabuki_slab",
+    "urushi:hiwadabuki_stairs",
+    "urushi:hiwadabuki_roof_45",
+    "urushi:hiwadabuki_roof_225"
+  ]
+}

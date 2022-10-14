@@ -3,9 +3,9 @@ package com.iwaliner.urushi.TileEntity;
 import com.iwaliner.urushi.Block.DirtFurnaceBlock;
 import com.iwaliner.urushi.Block.ReiryokuAltarBlock;
 import com.iwaliner.urushi.Block.RiceCauldronBlock;
-import com.iwaliner.urushi.BlocksRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.Item.HasReiryokuItem;
-import com.iwaliner.urushi.ItemsRegister;
+import com.iwaliner.urushi.ItemAndBlockRegister;
 import com.iwaliner.urushi.TileEntitiesRegister;
 import com.iwaliner.urushi.UrushiUtils;
 import net.minecraft.block.BlockState;
@@ -92,12 +92,12 @@ public  class RiceCauldronTileEntity extends LockableLootTileEntity implements I
         }
 
         /**アイテム変化*/
-        if(this.level.getBlockState(this.worldPosition.below()).getBlock()== BlocksRegister.dirt_furnace.get()&&this.level.getBlockState(this.worldPosition.below()).getValue(DirtFurnaceBlock.LIT)){
+        if(this.level.getBlockState(this.worldPosition.below()).getBlock()== ItemAndBlockRegister.dirt_furnace.get()&&this.level.getBlockState(this.worldPosition.below()).getValue(DirtFurnaceBlock.LIT)){
             if(slot0Stack.getCount()>0&&slot1Stack.isEmpty()){
                 if(processingTime<100){
                     this.processingTime++;
                 }else{
-                    this.setItem(1, new ItemStack(ItemsRegister.Rice.get(),slot0Stack.getCount()));
+                    this.setItem(1, new ItemStack(ItemAndBlockRegister.Rice.get(),slot0Stack.getCount()));
                     this.setItem(0, ItemStack.EMPTY);
                     this.processingTime = 0;
                     if(!getLevel().isClientSide()) {
@@ -113,7 +113,7 @@ public  class RiceCauldronTileEntity extends LockableLootTileEntity implements I
         if (i == 1) {
             return false;
         }  else {
-            return this.items.get(0).getCount()==0&&this.items.get(1).getCount()==0&&stack.getItem()== ItemsRegister.RawRice.get();
+            return this.items.get(0).getCount()==0&&this.items.get(1).getCount()==0&&stack.getItem()== ItemAndBlockRegister.RawRice.get();
         }
     }
     public boolean canTakeItemThroughFace(int i, ItemStack stack, Direction direction) {
